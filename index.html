@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namma Raste 2023</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Fixed Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="language-selector">
+                <a href="#" class="lang-link active">Kannada</a>
+                <a href="#" class="lang-link">English</a>
+            </div>
+            <div class="top-right">
+                <span class="namma-raste-text">NAMMA RASTE 2023</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Header -->
+     <header class="header">
+        <div class="logo-row">
+            <div class="logo-group-left">
+                <div class="logo-item">
+                    <img src="images/govt-logo.png" alt="Government Logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/bbmp-logo.png" alt="BBMP Logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/event-logo.png" alt="Event Logo" class="logo">
+                </div>
+            </div>
+
+            <div class="logo-group-right">
+                <div class="logo-item">
+                    <img src="images/bengaluru-metro-logo.png" alt="Metro logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/bengaluru-trafic-logo.png" alt="Traffic logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/namma-metro-logo.png" alt="Namma-metro logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/bmtc-logo.png" alt="BMTC logo" class="logo">
+                </div>
+                <div class="logo-item">
+                    <img src="images/rail-logo.png" alt="Metro logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Fixed Navigation -->
+    <nav class="navigation" id="navigation">
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#" class="nav-link" data-page="home">HOME</a></li>
+            <li><a href="#" class="nav-link" data-page="about">ABOUT</a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-page="convening">
+                    CONVENING <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item" data-day="day1">Day 1</a>
+                    <a href="#" class="dropdown-item" data-day="day2">Day 2</a>
+                    <a href="#" class="dropdown-item" data-day="day3">Day 3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="exhibition-link" data-page="exhibition">
+                    EXHIBITION <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu exhibition-dropdown">
+                    <a href="#" class="dropdown-item" data-subpage="moving-bengaluru">Moving Bengaluru</a>
+                    <a href="#" class="dropdown-item" data-subpage="govt-panel">Government Panels</a>
+                    <a href="#" class="dropdown-item" data-subpage="partners-panel-ex">Partners Panels</a>
+                </div>
+            </li>
+            <li><a href="#" class="nav-link" data-page="resources">RESOURCES</a></li>
+            <li><a href="#" class="nav-link" data-page="gallery">GALLERY</a></li>
+            <li><a href="#" class="nav-link" data-page="news">NEWS</a></li>
+            <li><a href="#" class="nav-link" data-page="partners">PARTNERS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay for mobile menu -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Scrollable Main Content -->
+    <main id="main-content" class="main-content-container">
+        <!-- Home Page -->
+        <div id="home-page" class="page-content active">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="namma-raste-logo">
+                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop"
+                            alt="Namma Raste Logo" class="event-logo">
+                    </div>
+                </div>
+            </section>
+
+            <section class="carousel-section">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="carousel-slide active">
+                            <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop"
+                                alt="Event Image 1">
+                            <div class="video-overlay">
+                                <div class="video-text">
+                                    <div class="scroll-text">SCROLL OF</div>
+                                    <div class="glimpse-text">GLIMPSE VIDEO</div>
+                                    <div class="plus-text">+ PICTURES</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop"
+                                alt="Event Image 2">
+                            <div class="video-overlay">
+                                <div class="video-text">
+                                    <div class="scroll-text">SCROLL OF</div>
+                                    <div class="glimpse-text">GLIMPSE VIDEO</div>
+                                    <div class="plus-text">+ PICTURES</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop"
+                                alt="Event Image 3">
+                            <div class="video-overlay">
+                                <div class="video-text">
+                                    <div class="scroll-text">SCROLL OF</div>
+                                    <div class="glimpse-text">GLIMPSE VIDEO</div>
+                                    <div class="plus-text">+ PICTURES</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop"
+                                alt="Event Image 4">
+                            <div class="video-overlay">
+                                <div class="video-text">
+                                    <div class="scroll-text">SCROLL OF</div>
+                                    <div class="glimpse-text">GLIMPSE VIDEO</div>
+                                    <div class="plus-text">+ PICTURES</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop"
+                                alt="Event Image 5">
+                            <div class="video-overlay">
+                                <div class="video-text">
+                                    <div class="scroll-text">SCROLL OF</div>
+                                    <div class="glimpse-text">GLIMPSE VIDEO</div>
+                                    <div class="plus-text">+ PICTURES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator" data-slide="0"></span>
+                        <span class="indicator active" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator active-green" data-slide="4"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-content">
+            <section class="about-section">
+                <div class="container">
+                    <h1 class="section-title">ABOUT</h1>
+                    <div class="about-content">
+                        <h2 class="about-heading">What is Namma Raste?</h2>
+                        <p class="about-text">
+                            Bengaluru is at a crossroads today. While it continues to build on its success as an
+                            innovation hub and India's Silicon Valley, it needs to rapidly adapt to evolving mobility
+                            patterns, driven by new opportunities in the city. In 2023, the Bruhat Bengaluru Mahanagara
+                            Palike (BBMP), in collaboration with WRI India, launched Namma Raste (our streets). The
+                            annual exhibition and convening aims to create discourse around the mobility needs of the
+                            city bringing together key government stakeholders, communities, partner organisations and
+                            academia.
+                        </p>
+                        <div class="namma-content">
+                            <ul>
+                                <li><span class="highlighted-text">Namma Raste 2023</span> focused on safe and climate
+                                    resilient streets with a focus on human-centric and holistic street design
+                                    strategies.</li>
+                                <br />
+                                <li><strong>Namma Raste 2025</strong> took a holistic, data-driven approach to address
+                                    urban mobility and invited citizens to contribute to shaping a more efficient and
+                                    inclusive transport future.</li>
+                            </ul>
+                        </div>
+
+                        <div class="how-does-section">
+                            <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1000&h=600&fit=crop"
+                                alt="How Does Namma Raste Move" class="how-does-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="exploration-section">
+                <div class="container">
+                    <h2><strong>Namma Raste 2025</strong> was an exploration that served as:</h2>
+                    <ul class="exploration-list">
+                        <li>
+                            A <strong>CAMPAIGN</strong> exploring <strong>Bengaluru's evolving sustainable
+                                mobility</strong> landscape.
+                        </li>
+                        <li>
+                            An <strong>EXHIBITION</strong> to experience Bengaluru's public transport transformation
+                            through data-driven narratives, interactive maps, and visual storytelling on buses, metros,
+                            non-motorized transport, and road infrastructure.
+                        </li>
+                        <li>
+                            A <strong>CONVENING</strong> of policymakers, urban designers, startups, and civic groups to
+                            discuss shaping a more connected and sustainable transport ecosystem.
+                        </li>
+                        <li>
+                            A <strong>PLATFORM</strong> for mobility experts, civic groups, students etc. to engage in
+                            insightful sessions and interactive activities aimed at raising awareness on the city's
+                            mobility challenges and solutions.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="statistics-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="stat-box green">
+                                <div class="stat-number">Approx. 5000</div>
+                                <div class="stat-label">Attendees</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <div class="stat-box green">
+                                <div class="stat-number">70</div>
+                                <div class="stat-label">Speakers</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div class="stat-box green">
+                                <div class="stat-number">68</div>
+                                <div class="stat-label">Government & Partner Organisation</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div class="stat-box green">
+                                <div class="stat-number">16+</div>
+                                <div class="stat-label">Schools & Colleges</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apd-link">
+                        <p class="apd-text">
+                            Namma Raste 2025 event was made accessible with the support of
+                            <a href="https://www.apd-india.org" class="apd-link-text">APD</a> (hyperlink website)
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONVENING Page Content -->
+        <div id="convening-page" class="page-content">
+            <section class="convening-section">
+                <div class="container">
+                    <div class="convening-layout">
+                        <!-- Main Content Area -->
+                        <div class="convening-main">
+                            <div class="convening-header">
+                                <h1 class="convening-title">CONVENING</h1>
+                            </div>
+                            <!-- Day 1 Content -->
+                            <div id="day1-content" class="day-content active">
+                                <div class="day-header">
+                                    <div class="agenda-title">AGENDA</div>
+                                    <div class="day-number">DAY 1</div>
+                                    <div class="day-date">February 20th</div>
+                                    <div class="namma-raste-logo-small">
+                                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=100&h=50&fit=crop"
+                                            alt="Namma Raste Logo">
+                                    </div>
+                                </div>
+                                <div class="agenda-content">
+                                    <div class="agenda-left">
+                                        <div class="agenda-item">
+                                            <div class="time-slot">10:00 am – 12:00 pm</div>
+                                            <div class="session-title">Launch of Namma Raste 2025 & Launch of Namma
+                                                Raste Kaipidi</div>
+                                            <div class="speakers">
+                                                <p><strong>Shri DK Shivakumar</strong>, Deputy Chief Minister of
+                                                    Karnataka</p>
+                                                <p><strong>Shri Uma Shankar</strong>, IAS, Additional Chief Secretary to
+                                                    Government, Urban Development Department</p>
+                                                <p><strong>Shri Tushar Giri Nath</strong>, Chief Commissioner, BBMP</p>
+                                                <p><strong>Dr. Avinash Menon</strong>, IAS, Special Commissioner
+                                                    (Projects), BBMP</p>
+                                                <p><strong>Dr B S Prahallad</strong>, PhD, Chairman, SOP Committee</p>
+                                                <p><strong>SOP Committee Members</strong></p>
+                                                <p><strong>Madhav Pai</strong>, CEO, WRI India</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">12:00 pm – 12:30 pm</div>
+                                            <div class="session-title">Sustainable Transport & Livability</div>
+                                            <div class="speakers">
+                                                <p><strong>Prof. Ashish Verma</strong>, IISc Sustainable Transportation
+                                                    Lab</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">02:00 pm – 03:00 pm</div>
+                                            <div class="session-title">Media and Mobility: Rethinking the Narrative
+                                            </div>
+                                            <div class="speakers">
+                                                <p><strong>KC Deepika</strong>, City Editor, The Hindu</p>
+                                                <p><strong>Nandini Chandrashekar</strong>, Associate Editor, The News
+                                                    Minute</p>
+                                                <p><strong>Rasheed Kappan</strong>, Multimedia Journalist and Podcaster
+                                                </p>
+                                                <p><strong>Sathyanarayanan Sankaran</strong>, Host, Oogi Labs</p>
+                                                <p><strong>Harish Upadhya</strong>, Assistant Editor, CNN News18</p>
+                                                <p><strong>Jimmy Xavier</strong>, Media Personality</p>
+                                                <p><strong>Srinivas Alavilli</strong>, Fellow, WRI India (moderator)</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">03:00 pm – 04:00 pm</div>
+                                            <div class="session-title">How Do We Manage Bengaluru's Traffic?</div>
+                                            <div class="speakers">
+                                                <p>Special Address by <strong>MN Anucheth</strong>, IPS, Joint
+                                                    Commissioner of Police (Traffic) Bengaluru</p>
+                                                <p>Followed by a session with the <strong>Joint Commissioner of Police &
+                                                        Vendors</strong></p>
+                                                <p><strong>Subbarao Chunduru</strong>, Director, Arcadis IBI Group,
+                                                    moderated by <strong>Dhruval Ashar</strong>, WRI India.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="agenda-right">
+                                        <div class="video-section">
+                                            <video class="agenda-video" controls
+                                                poster="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop">
+                                                <source
+                                                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <div class="video-overlay-text">
+                                            </div>
+                                        </div>
+                                        <div class="launch-info">
+                                            <h3>Launch of Namma Raste 2025 & Launch of Namma Raste Kaipidi</h3>
+                                            <p><em>'Namma Raste Kaipidi'</em>, an illustrated guidebook that outlines
+                                                best practices in the design, construction, operation and maintenance of
+                                                roads.</p>
+                                        </div>
+                                        <div class="video-section">
+                                            <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                                alt="Gender Responsive Mobility" class="video-thumbnail">
+                                            <div class="video-overlay">
+                                                <div class="video-title">Gender Responsive Mobility</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 2 Content -->
+                            <div id="day2-content" class="day-content">
+                                <div class="day-header">
+                                    <div class="agenda-title">AGENDA</div>
+                                    <div class="day-number">DAY 2</div>
+                                    <div class="day-date">February 21st</div>
+                                    <div class="namma-raste-logo-small">
+                                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=100&h=50&fit=crop"
+                                            alt="Namma Raste Logo">
+                                    </div>
+                                </div>
+                                <div class="agenda-content">
+                                    <div class="agenda-left">
+                                        <div class="agenda-item">
+                                            <div class="time-slot">10:00 am – 12:00 pm</div>
+                                            <div class="session-title">Digital Infrastructure & Smart Mobility</div>
+                                            <div class="speakers">
+                                                <p><strong>Shri DK Shivakumar</strong>, Deputy Chief Minister of
+                                                    Karnataka</p>
+                                                <p><strong>Shri Uma Shankar</strong>, IAS, Additional Chief Secretary to
+                                                    Government, Urban Development Department</p>
+                                                <p><strong>Shri Tushar Giri Nath</strong>, Chief Commissioner, BBMP</p>
+                                                <p><strong>Dr. Avinash Menon</strong>, IAS, Special Commissioner
+                                                    (Projects), BBMP</p>
+                                                <p><strong>Dr B S Prahallad</strong>, PhD, Chairman, SOP Committee</p>
+                                                <p><strong>SOP Committee Members</strong></p>
+                                                <p><strong>Madhav Pai</strong>, CEO, WRI India</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">12:00 pm – 12:30 pm</div>
+                                            <div class="session-title">Public Transport Integration</div>
+                                            <div class="speakers">
+                                                <p><strong>Prof. Ashish Verma</strong>, IISc Sustainable Transportation
+                                                    Lab</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">02:00 pm – 03:00 pm</div>
+                                            <div class="session-title">Future of Urban Mobility
+                                            </div>
+                                            <div class="speakers">
+                                                <p><strong>KC Deepika</strong>, City Editor, The Hindu</p>
+                                                <p><strong>Nandini Chandrashekar</strong>, Associate Editor, The News
+                                                    Minute</p>
+                                                <p><strong>Rasheed Kappan</strong>, Multimedia Journalist and Podcaster
+                                                </p>
+                                                <p><strong>Sathyanarayanan Sankaran</strong>, Host, Oogi Labs</p>
+                                                <p><strong>Harish Upadhya</strong>, Assistant Editor, CNN News18</p>
+                                                <p><strong>Jimmy Xavier</strong>, Media Personality</p>
+                                                <p><strong>Srinivas Alavilli</strong>, Fellow, WRI India (moderator)</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">03:00 pm – 04:00 pm</div>
+                                            <div class="session-title">Sustainable Transport Solutions</div>
+                                            <div class="speakers">
+                                                <p>Special Address by <strong>MN Anucheth</strong>, IPS, Joint
+                                                    Commissioner of Police (Traffic) Bengaluru</p>
+                                                <p>Followed by a session with the <strong>Joint Commissioner of Police &
+                                                        Vendors</strong></p>
+                                                <p><strong>Subbarao Chunduru</strong>, Director, Arcadis IBI Group,
+                                                    moderated by <strong>Dhruval Ashar</strong>, WRI India.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="agenda-right">
+                                        <div class="video-section">
+                                            <video class="agenda-video" controls
+                                                poster="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop">
+                                                <source
+                                                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        <div class="launch-info">
+                                            <h3>Digital Infrastructure & Smart Mobility Session</h3>
+                                            <p><em>Day 2 Session</em>, focused on digital infrastructure and smart
+                                                mobility solutions for Bengaluru's transport future.</p>
+                                        </div>
+                                        <div class="video-section">
+                                            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                                alt="Smart Mobility" class="video-thumbnail">
+                                            <div class="video-overlay">
+                                                <div class="video-title">Smart Mobility Solutions</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 3 Content -->
+                            <div id="day3-content" class="day-content">
+                                <div class="day-header">
+                                    <div class="agenda-title">AGENDA</div>
+                                    <div class="day-number">DAY 3</div>
+                                    <div class="day-date">February 22nd</div>
+                                    <div class="namma-raste-logo-small">
+                                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=100&h=50&fit=crop"
+                                            alt="Namma Raste Logo">
+                                    </div>
+                                </div>
+                                <div class="agenda-content">
+                                    <div class="agenda-left">
+                                        <div class="agenda-item">
+                                            <div class="time-slot">10:00 am – 12:00 pm</div>
+                                            <div class="session-title">Community Engagement & Inclusive Design</div>
+                                            <div class="speakers">
+                                                <p><strong>Shri DK Shivakumar</strong>, Deputy Chief Minister of
+                                                    Karnataka</p>
+                                                <p><strong>Shri Uma Shankar</strong>, IAS, Additional Chief Secretary to
+                                                    Government, Urban Development Department</p>
+                                                <p><strong>Shri Tushar Giri Nath</strong>, Chief Commissioner, BBMP</p>
+                                                <p><strong>Dr. Avinash Menon</strong>, IAS, Special Commissioner
+                                                    (Projects), BBMP</p>
+                                                <p><strong>Dr B S Prahallad</strong>, PhD, Chairman, SOP Committee</p>
+                                                <p><strong>SOP Committee Members</strong></p>
+                                                <p><strong>Madhav Pai</strong>, CEO, WRI India</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">12:00 pm – 12:30 pm</div>
+                                            <div class="session-title">Climate Resilience & Green Mobility</div>
+                                            <div class="speakers">
+                                                <p><strong>Prof. Ashish Verma</strong>, IISc Sustainable Transportation
+                                                    Lab</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">02:00 pm – 03:00 pm</div>
+                                            <div class="session-title">Vision 2030: Bengaluru's Transport Future
+                                            </div>
+                                            <div class="speakers">
+                                                <p><strong>KC Deepika</strong>, City Editor, The Hindu</p>
+                                                <p><strong>Nandini Chandrashekar</strong>, Associate Editor, The News
+                                                    Minute</p>
+                                                <p><strong>Rasheed Kappan</strong>, Multimedia Journalist and Podcaster
+                                                </p>
+                                                <p><strong>Sathyanarayanan Sankaran</strong>, Host, Oogi Labs</p>
+                                                <p><strong>Harish Upadhya</strong>, Assistant Editor, CNN News18</p>
+                                                <p><strong>Jimmy Xavier</strong>, Media Personality</p>
+                                                <p><strong>Srinivas Alavilli</strong>, Fellow, WRI India (moderator)</p>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="time-slot">03:00 pm – 04:00 pm</div>
+                                            <div class="session-title">Closing Ceremony & Way Forward</div>
+                                            <div class="speakers">
+                                                <p>Special Address by <strong>MN Anucheth</strong>, IPS, Joint
+                                                    Commissioner of Police (Traffic) Bengaluru</p>
+                                                <p>Followed by a session with the <strong>Joint Commissioner of Police &
+                                                        Vendors</strong></p>
+                                                <p><strong>Subbarao Chunduru</strong>, Director, Arcadis IBI Group,
+                                                    moderated by <strong>Dhruval Ashar</strong>, WRI India.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="agenda-right">
+                                        <div class="video-section">
+                                            <video class="agenda-video" controls
+                                                poster="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop">
+                                                <source
+                                                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        <div class="launch-info">
+                                            <h3>Community Engagement & Vision 2030</h3>
+                                            <p><em>Day 3 Final Session</em>, focusing on community engagement, inclusive
+                                                design and Bengaluru's transport vision for 2030.</p>
+                                        </div>
+                                        <div class="video-section">
+                                            <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                                alt="Vision 2030" class="video-thumbnail">
+                                            <div class="video-overlay">
+                                                <div class="video-title">Vision 2030</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Exhibition Page -->
+        <div id="exhibition-page" class="page-content">
+            <section class="exhibition-standalone-section">
+                <!-- Exhibition Overview Content -->
+                <div id="exhibition-overview-content" class="exhibition-subpage-content active">
+                    <h2 class="section-title">EXHIBITION</h2>
+                    <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                        alt="Overview Image" class="exhibition-main-image">
+                    <p>The Namma Raste 2025 exhibition panels offered a rich, immersive journey into Bengaluru's
+                        evolving urban mobility landscape.</p>
+                    <p><strong>The storyboards, interactive maps and panels</strong> used data visualizations to
+                        illustrate the transformation of public transport in the city, including buses, metro,
+                        footpaths, cycling lanes, and non-motorized transport.</p>
+                </div>
+
+                <div id="home-content" class="page-content">
+                    <h1>Welcome to the Bengaluru Exhibition!</h1>
+                    <p>Explore the vibrant dynamics of Bengaluru, from its urban evolution and mobility solutions to the
+                        key governmental initiatives and the contributions of esteemed partner organizations shaping its
+                        future. Navigate through the sections above to delve deeper into each fascinating aspect of our
+                        city.</p>
+                </div>
+
+                <!-- moving bengaluru -->
+                <div id="moving-bengaluru-content" class="exhibition-subpage-content page-content">
+                    <h2 class="section-title1">MOVING BENGALURU</h2>
+                    <div class="exhibition-container">
+                        <div class="exhibition-list-section">
+                            <h3>HOW DOES BENGALURU MOVE?</h3>
+                            <ul class="exhibition-list">
+                                <li><a href="#" data-panel-id="panel1" class="active">1. Built footprint evolution
+                                        across Bengaluru (1985–2019)</a></li>
+                                <li><a href="#" data-panel-id="panel2">2. Vicious or virtuous?</a></li>
+                                <li><a href="#" data-panel-id="panel3">3. Expanding tracks, connecting futures</a></li>
+                                <li><a href="#" data-panel-id="panel4">4. BMTC - Keeps Bengaluru Moving</a></li>
+                                <li><a href="#" data-panel-id="panel5">5. The rise of shared mobility</a></li>
+                                <li><a href="#" data-panel-id="panel6">6. Connecting the unconnected</a></li>
+                                <li><a href="#" data-panel-id="panel7">7. Bridging the Gap</a></li>
+                                <li><a href="#" data-panel-id="panel8">8. Bringing jobs Closer</a></li>
+                                <li><a href="#" data-panel-id="panel9">9. State of Road Safety in Bengaluru</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-preview-area card">
+                            <div class="panel-item" id="panel1-content" style="display: block;">
+                                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 1" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Built footprint evolution across Bengaluru (1985–2019)</p>
+                            </div>
+
+                            <div class="panel-item" id="panel2-content">
+                                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 2" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Vicious or virtuous?</p>
+                            </div>
+
+                            <div class="panel-item" id="panel3-content">
+                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 3" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Expanding tracks, connecting futures</p>
+                            </div>
+
+                            <div class="panel-item" id="panel4-content">
+                                <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 4" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BMTC - Keeps Bengaluru Moving</p>
+                            </div>
+
+                            <div class="panel-item" id="panel5-content">
+                                <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 5" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>The rise of shared mobility</p>
+                            </div>
+
+                            <div class="panel-item" id="panel6-content">
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 6" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Connecting the unconnected</p>
+                            </div>
+
+                            <div class="panel-item" id="panel7-content">
+                                <img src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 7" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Bridging the Gap</p>
+                            </div>
+
+                            <div class="panel-item" id="panel8-content">
+                                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 8" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Bringing jobs Closer</p>
+                            </div>
+
+                            <div class="panel-item" id="panel9-content">
+                                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Panel 9" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>State of Road Safety in Bengaluru</p>
+                            </div>
+                            <!-- Navigation Arrows -->
+                            <button class="slide-nav prev-slide" onclick="changeSlide(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slide-nav next-slide" onclick="changeSlide(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Government panels -->
+                <div id="govt-panel-content" class="exhibition-subpage-content page-content">
+                    <h2 class="section-title1">GOVERNMENT PANELS</h2>
+                    <div class="exhibition-container">
+                        <div class="exhibition-list-section">
+                            <h3>GOVERNMENT DEPARTMENTS</h3>
+                            <ul class="exhibition-list govt-list">
+                                <li><a href="#" data-panel-id="bbmp-panel" class="active">1. BBMP</a></li>
+                                <li><a href="#" data-panel-id="bmrcl-panel">2. BMRCL</a></li>
+                                <li><a href="#" data-panel-id="btp-panel">3. BTP</a></li>
+                                <li><a href="#" data-panel-id="dult-panel">4. DULT</a></li>
+                                <li><a href="#" data-panel-id="kridge-panel">5. KRIDGE</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-preview-area card">
+                            <div class="panel-item govt-panel-item" id="bbmp-panel-content" style="display: block;">
+                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BBMP Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BBMP - Bruhat Bengaluru Mahanagara Palike initiatives and urban development projects.
+                                </p>
+                            </div>
+
+                            <div class="panel-item govt-panel-item" id="bmrcl-panel-content" style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BMRCL Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BMRCL - Bangalore Metro Rail Corporation Limited metro expansion projects and
+                                    connectivity.</p>
+                            </div>
+
+                            <div class="panel-item govt-panel-item" id="btp-panel-content" style="display: none;">
+                                <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BTP Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BTP - Bangalore Traffic Police traffic management and road safety initiatives.</p>
+                            </div>
+
+                            <div class="panel-item govt-panel-item" id="dult-panel-content" style="display: none;">
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="DULT Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>DULT - Directorate of Urban Land Transport sustainable mobility solutions.</p>
+                            </div>
+
+                            <div class="panel-item govt-panel-item" id="kridge-panel-content" style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="KRIDGE Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>KRIDGE - Karnataka Road Infrastructure Development Corporation road development
+                                    projects.</p>
+                            </div>
+                            <!-- Navigation Arrows -->
+                            <button class="slide-nav prev-slide" onclick="changeSlide(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slide-nav next-slide" onclick="changeSlide(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partners panels -->
+                <div id="partners-panel-ex-content" class="exhibition-subpage-content page-content">
+                    <h2 class="section-title1">PARTNERS PANELS</h2>
+                    <div class="exhibition-container">
+                        <div class="exhibition-list-section">
+                            <h3>PARTNER ORGANIZATIONS</h3>
+                            <ul class="exhibition-list partners-list">
+                                <li><a href="#" data-panel-id="iud-india-panel" class="active">1. Institute of Urban
+                                        Designers India</a></li>
+                                <li><a href="#" data-panel-id="ds-arch-panel">2. Dayanand Sagar College of
+                                        Architecture</a></li>
+                                <li><a href="#" data-panel-id="rv-arch-panel">3. RV College of Architecture</a></li>
+                                <li><a href="#" data-panel-id="bmsca-basava-panel">4. BMSCA Basavanagudi</a></li>
+                                <li><a href="#" data-panel-id="manipal-arch-panel">5. Manipal School of Architecture and
+                                        Planning</a></li>
+                                <li><a href="#" data-panel-id="iisc-panel-partner">6. Indian Institute of Science</a>
+                                </li>
+                                <li><a href="#" data-panel-id="christ-uni-panel">7. Christ University</a></li>
+                                <li><a href="#" data-panel-id="inventure-panel">8. Our Voice by Students of Inventure
+                                        Academy</a></li>
+                                <li><a href="#" data-panel-id="bbmp-schools-panel">9. BBMP Schools</a></li>
+                                <li><a href="#" data-panel-id="bgr-azim-panel">10. BGR Azim Premji University</a></li>
+                                <li><a href="#" data-panel-id="mount-carmel-panel">11. Mount Carmel College</a></li>
+                                <li><a href="#" data-panel-id="basil-woods-panel">12. Basil Woods Nature School</a></li>
+                                <li><a href="#" data-panel-id="valley-school-panel">13. Valley School</a></li>
+                                <li><a href="#" data-panel-id="charan-degree-panel">14. Charan Degree College</a></li>
+                                <li><a href="#" data-panel-id="bmsca-yel-panel">15. BMS School of Architecture,
+                                        Yelahanka</a></li>
+                                <li><a href="#" data-panel-id="bms-basava-panel">16. BMS Basavanagudi</a></li>
+                                <li><a href="#" data-panel-id="reva-uni-panel">17. Reva University</a></li>
+                                <li><a href="#" data-panel-id="rv-college-general-panel">18. RV College</a></li>
+                                <li><a href="#" data-panel-id="ds-arch-old-panel">19. Dayanand Sagar School of
+                                        Architecture</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-preview-area card">
+                            <div class="panel-item partners-panel-item" id="iud-india-panel-content"
+                                style="display: block;">
+                                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Institute of Urban Designers India Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>The Institute of Urban Designers India (IUDI) promotes excellence in urban design.
+                                </p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="ds-arch-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Dayanand Sagar College of Architecture Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Dayanand Sagar College of Architecture (DSCA) focuses on innovative architectural
+                                    education.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="rv-arch-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="RV College of Architecture Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>RV College of Architecture (RVCA) offers programs integrating design and technology.
+                                </p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="bmsca-basava-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BMSCA Basavanagudi Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BMS College of Architecture, Basavanagudi, contributes to design education.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="manipal-arch-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Manipal School of Architecture and Planning Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Manipal School of Architecture and Planning (MSAP) is known for its comprehensive
+                                    approach to architecture.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="iisc-panel-partner-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Indian Institute of Science Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>The Indian Institute of Science (IISc) is a premier institution for scientific
+                                    research and education.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="christ-uni-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Christ University Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Christ University, a leading institution, offers diverse academic programs.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="inventure-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Inventure Academy Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Our Voice by Students of Inventure Academy showcases youth perspectives on urban
+                                    issues.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="bbmp-schools-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BBMP Schools Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BBMP Schools play a crucial role in providing public education in Bengaluru.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="bgr-azim-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BGR Azim Premji University Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BGR Azim Premji University contributes to research and education focused on social
+                                    change.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="mount-carmel-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Mount Carmel College Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Mount Carmel College is a well-regarded institution offering a wide range of courses.
+                                </p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="basil-woods-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Basil Woods Nature School Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Basil Woods Nature School focuses on experiential and nature-based learning.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="valley-school-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Valley School Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>The Valley School provides a unique educational environment.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="charan-degree-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Charan Degree College Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Charan Degree College offers various undergraduate programs.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="bmsca-yel-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BMS School of Architecture, Yelahanka Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184390/pexels-photo-3184390.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BMS School of Architecture, Yelahanka, is a newer branch expanding architectural
+                                    education.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="bms-basava-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="BMS Basavanagudi Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>BMS Basavanagudi, a prominent institution, contributes to various fields of study.
+                                </p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="reva-uni-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Reva University Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Reva University offers a diverse range of undergraduate and postgraduate programs.
+                                </p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="rv-college-general-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="RV College Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>RV College (General) is a well-established institution with various academic
+                                    disciplines.</p>
+                            </div>
+
+                            <div class="panel-item partners-panel-item" id="ds-arch-old-panel-content"
+                                style="display: none;">
+                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                    alt="Dayanand Sagar School of Architecture Panel Preview" class="panel-image"
+                                    data-full-src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop">
+                                <p>Dayanand Sagar School of Architecture is a key institution in design education.</p>
+                            </div>
+                            <!-- Navigation Arrows -->
+                            <button class="slide-nav prev-slide" onclick="changeSlide(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slide-nav next-slide" onclick="changeSlide(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="image-modal" class="modal">
+            <span class="close-panel-modal">&times;</span>
+            <img class="modal-content" id="modal-image">
+        </div>
+
+        <!-- Resources Page -->
+        <div id="resources-page" class="page-content">
+            <section class="resources-section">
+                <div class="container">
+                    <h1 class="section-title">RESOURCES</h1>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <img src="https://picsum.photos/id/10/600/400" alt="Namma Raste Kaipidi Guidebook">
+                            <h3>Namma Raste Kaipidi (Guidebook): Towards Safe, Inclusive, and Resilient Roads in
+                                Bengaluru</h3>
+                            <p>'Namma Raste Kaipidi', an illustrated guidebook that outlines best practices in the
+                                design, construction,
+                                operation and maintenance of roads. The guidebook aims to improve Bengaluru's 12,000 km
+                                road network, ensuring that they are designed for long-term sustainability and
+                                resilience.</p>
+                            <a href="#" class="pdf-link"
+                                onclick="showPopupPDF('https://www.africau.edu/images/default/sample.pdf'); return false;">LINK
+                                TO POP UP PDF</a>
+                            <span class="link-text">*Document to be made available soon.*</span>
+                        </div>
+                        <div class="resource-item">
+                            <img src="https://picsum.photos/id/20/600/400"
+                                alt="High Density Corridors Bengaluru - Design Manual">
+                            <h3>High Density Corridors Bengaluru - Design Manual</h3>
+                            <p>An illustrated guidebook that outlines best practices in the design, construction,
+                                operation and maintenance of roads. The guidebook aims to improve Bengaluru's roads.</p>
+                            <a href="#" class="pdf-link"
+                                onclick="showPopupPDF('https://www.africau.edu/images/default/sample.pdf'); return false;">LINK
+                                TO POP
+                                UP PDF</a>
+                            <span class="link-text">*Document to be made available soon.*</span>
+
+                        </div>
+                        <div class="resource-item">
+                            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                                alt="Streets and Intersection - Design Checklist">
+                            <h3>Streets and Intersection - Design Checklist for streets and intersections for infants,
+                                toddlers and caregivers.</h3>
+                            <p>An illustrated guidebook that outlines best practices in the design, construction,
+                                operation and maintenance of roads. The guidebook aims to improve Bengaluru's roads.</p>
+                            <a href="#" class="pdf-link"
+                                onclick="showPopupPDF('https://www.africau.edu/images/default/sample.pdf'); return false;">LINK
+                                TO POP UP PDF</a>
+                            <span class="link-text">*Document to be made available soon.*</span>
+                        </div>
+                    </div>
+                    <div class="resource-section-alt">
+                        <h3 class="subsection-title">Namma Raste Kaipidi Illustrated Handbook</h3>
+                        <div class="language-versions">
+                            <div class="language-item">
+                                <img src="https://picsum.photos/id/20/600/400" alt="Namma Raste Kaipidi English">
+                                <p class="language-label">ENGLISH</p>
+                                <a href="#" class="pdf-link"
+                                    onclick="showPopupPDF('https://www.africau.edu/images/default/sample.pdf'); return false;">LINK
+                                    TO POP UP PDF</a>
+                            </div>
+                            <div class="language-item">
+                                <img src="https://picsum.photos/id/60/600/400" alt="Namma Raste Kaipidi Kannada">
+                                <p class="language-label">KANNADA</p>
+                                <a href="#" class="pdf-link"
+                                    onclick="showPopupPDF('https://www.africau.edu/images/default/sample.pdf'); return false;">LINK
+                                    TO POP UP PDF</a>
+                            </div>
+                        </div>
+                        <p class="full-description">MOD Foundation, in collaboration with Namma Raste, is proud to
+                            present a first-of-its-kind Illustrated Handbook, bridges the gap between policy and
+                            practice, ensuring that Bengaluru's streets are designed to be pedestrian-friendly,
+                            utility-smart, and future-ready. The Illustrated Handbook has been adapted from the Namma
+                            Raste Kaipidi (Manual), originally developed by WRI India and the Indian Institute of
+                            Science (IISc) Sustainability Lab.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PDF Popup -->
+        <div id="pdf-popup"
+            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+            <div
+                style="background:white; padding:20px; border-radius:8px; position:relative; max-width:90%; max-height:90%; overflow:auto;">
+                <button onclick="closePopupPDF()"
+                    style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5em; cursor:pointer;">&times;</button>
+                <iframe id="pdf-viewer" style="width:80vw; height:80vh; border:none;"></iframe>
+            </div>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery-page" class="page-content">
+            <div class="gallery-page-container">
+                <h1 class="gallery-page-title">GALLERY</h1>
+                <div class="gallery-grid" id="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/60/600/400" alt="Gallery 1" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/20/600/400" alt="Gallery 2" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/10/600/400" alt="Gallery 3" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/180/600/400" alt="Gallery 4" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/50/600/400" alt="Gallery 5" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/id/30/600/400" alt="Gallery 6" class="gallery-image">
+                        <div class="gallery-text-content">
+                            <h3>Namma Raste Kaipidi</h3>
+                            <p>'Namma Raste Kaipidi,' an illustrated guidebook that outlines best practices in the
+                                design, construction, operation and maintenance of roads.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Page -->
+        <div id="news-page" class="page-content">
+            <div class="news-page-container">
+                <h1 class="news-page-title">NEWS</h1>
+                <div class="news-grid">
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma1/600/400" alt="News Image 1" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma4/600/400" alt="News Image 2" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma3/600/400" alt="News Image 3" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma4/600/400" alt="News Image 4" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma5/600/400" alt="News Image 5" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                    <a href="#" class="news-item">
+                        <img src="https://picsum.photos/seed/namma6/600/400" alt="News Image 6" class="news-item-img">
+                        <div class="news-text-content">
+                            <h3>Namma Raste Kaipidi Illustrated Handbook</h3>
+                            <p>MOD Foundation, in collaboration with Namma Raste, is proud to present a
+                                first-of-its-kind illustrated Handbook</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Page -->
+        <div id="partners-page" class="page-content">
+            <section class="partners-section my-8">
+                <h2 class="partners-heading">Partners</h2>
+                <div class="partners-card-container">
+                    <div class="partners-grid">
+                        <div class="partner-item">
+                            <div class="partner-text-content">
+                                <h3>ACADEMIC INSTITUTIONS</h3>
+                                <div class="card-content-scroll">
+                                    <ol class="partner-list">
+                                        <li>Institute of Urban Designers India</li>
+                                        <li>Dayanand Sagar College of Architecture</li>
+                                        <li>RV College of Architecture</li>
+                                        <li>BMSCA Basavanagudi</li>
+                                        <li>Manipal School of Architecture and Planning</li>
+                                        <li>Indian Institute of Science</li>
+                                        <li>Christ University</li>
+                                        <li>Our Voice by Students of Inventure Academy</li>
+                                        <li>BBMP Schools</li>
+                                        <li>BGR Azim Premji University</li>
+                                        <li>Mount Carmel College</li>
+                                        <li>Basil Woods Nature School</li>
+                                        <li>Valley School</li>
+                                        <li>Charan Degree College</li>
+                                        <li>BMS School of Architecture, Yelahanka</li>
+                                        <li>BMS Basavangudi</li>
+                                        <li>Reva University</li>
+                                        <li>RV College</li>
+                                        <li>Dayanand Sagar School of Architecture</li>
+                                        <li>Ramajah College of Law</li>
+                                        <li>New Horizon Gurukul</li>
+                                        <li>DPS South</li>
+                                        <li>Shantiniketan Giringara</li>
+                                        <li>Shraddhanjali Integrated School</li>
+                                        <li>CSTEP</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="partner-item">
+                            <div class="partner-text-content">
+                                <h3>CIVIC ORGANIZATIONS</h3>
+                                <div class="card-content-scroll">
+                                    <ol class="partner-list">
+                                        <li>Bangalore Political Action Committee (B.PAC)</li>
+                                        <li>Association of People with Disabilities</li>
+                                        <li>HSR Citizen Forum & HSR</li>
+                                        <li>Cyclists Group</li>
+                                        <li>Bangalore Apartment Federation</li>
+                                        <li>Bangalore Walks</li>
+                                        <li>PotHoleRaja</li>
+                                        <li>UnboxingBLR</li>
+                                        <li>Apna Wahan</li>
+                                        <li>India Rising Trust</li>
+                                        <li>Everyday City Lab</li>
+                                        <li>Save Our Sarjapura Road</li>
+                                        <li>Safety for Women</li>
+                                        <li>Sustainable Mobility Network (SMN)</li>
+                                        <li>Science Gallery Bengaluru</li>
+                                        <li>ASAR</li>
+                                        <li>Namma Yatri</li>
+                                        <li>ARDU</li>
+                                        <li>Art in Transit</li>
+                                        <li>IISc CISIUP</li>
+                                        <li>IISc Sustainable Transportation Lab</li>
+                                        <li>Papli Labs</li>
+                                        <li>EnAble India</li>
+                                        <li>All Serena</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="partner-item">
+                            <div class="partner-text-content">
+                                <h3>DESIGN CONSULTANTS</h3>
+                                <div class="card-content-scroll">
+                                    <ol class="partner-list">
+                                        <li>ITDP</li>
+                                        <li>BengaWalk</li>
+                                        <li>Sensing Local Foundation</li>
+                                        <li>MoveInSync</li>
+                                        <li>Arcadis</li>
+                                        <li>Compartment S4</li>
+                                        <li>KPMG Assurance & Consulting Services LLP (ESG-Social)</li>
+                                        <li>Jana USP</li>
+                                        <li>Urban Morph</li>
+                                        <li>Spatial Cultures</li>
+                                        <li>Alstom</li>
+                                        <li>MBRDI</li>
+                                        <li>KReate</li>
+                                        <li>Tummoc</li>
+                                        <li>VoltriX</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <!-- Top light gray bar -->
+                    <!-- <div class="footer-top">
+                        Namma Raste 2025 event was made accessible with the support of
+                        <a href="https://www.example.com/apd" target="_blank">APD</a>
+                    </div> -->
+                    <br />
+                    <!-- Bottom dark green bar -->
+                    <div class="footer-bottom">
+                        <!-- <div class="footer-left">
+                            RIGHTS RESERVED © 2025
+                            <a href="https://bbmp.gov.in" target="_blank">BRUHAT BENGALURU MAHANAGARA PALIKE</a>
+                        </div> -->
+                        <div class="footer-right">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop"
+                                alt="Namma Raste Logo">
+                        </div>
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+
+        <!-- Gallery Popup -->
+        <div id="image-popup">
+            <span class="close-popup">&times;</span>
+            <div class="popup-content">
+                <img id="popup-image" src="" alt="Popup Image">
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Full Panel Images -->
+    <div id="panel-modal" class="modal">
+        <span class="close-panel-modal">&times;</span>
+        <img class="modal-content" id="img-panel">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
