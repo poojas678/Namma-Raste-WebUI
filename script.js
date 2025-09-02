@@ -1,5 +1,31 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function () {
+
+    const agendaItems = document.querySelectorAll(".agenda-item");
+    const videoCards = document.querySelectorAll(".video-card");
+
+    // Left menu click → show respective video card
+    agendaItems.forEach(item => {
+        item.addEventListener("click", () => {
+            agendaItems.forEach(i => i.classList.remove("active"));
+            videoCards.forEach(v => v.classList.remove("active"));
+
+            item.classList.add("active");
+            const target = item.getAttribute("data-video");
+            document.getElementById(target).classList.add("active");
+        });
+    });
+
+    
+
+   // Thumbnail click → replace with iframe video
+    document.querySelectorAll(".thumbnail").forEach(thumbnail => {
+        thumbnail.addEventListener("click", function () {
+            const youtubeURL = this.getAttribute("data-youtube") + "?autoplay=1";
+            this.outerHTML = `<iframe class="agenda-video" src="${youtubeURL}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        });
+    });
+
     // Mobile menu functionality
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const navigation = document.getElementById('navigation');
@@ -9,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mobile menu toggle
     if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.addEventListener('click', function () {
             navigation.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('active');
             document.body.classList.toggle('mobile-menu-open');
@@ -18,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close mobile menu when overlay is clicked
     if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', function() {
+        mobileMenuOverlay.addEventListener('click', function () {
             navigation.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             document.body.classList.remove('mobile-menu-open');
@@ -27,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle dropdown toggles in mobile
     dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
+        toggle.addEventListener('click', function (e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 const dropdown = this.closest('.dropdown');
@@ -35,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+
 
     // Get all navigation links and pages
     const pages = document.querySelectorAll('.page-content');
@@ -68,41 +96,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Show page function
-   // Show page function
-function showPage(pageId, subPageId = null) {
-    // Hide all pages
-    document.querySelectorAll('.page-content').forEach(page => {
-        page.classList.remove('active');
-    });
+    function showPage(pageId, subPageId = null) {
+        // Hide all pages
+        document.querySelectorAll('.page-content').forEach(page => {
+            page.classList.remove('active');
+        });
 
-    // Show target main page
-    const targetPage = document.getElementById(pageId + '-page');
-    if (targetPage) {
-        targetPage.classList.add('active');
+        // Show target main page
+        const targetPage = document.getElementById(pageId + '-page');
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
+
+        // Handle special cases
+        if (pageId === 'convening') {
+            if (subPageId) {
+                showDayContent(subPageId);
+            } else {
+                // Show default (Day 1) if no specific day selected
+                document.querySelectorAll('.day-content').forEach(c => c.classList.remove('active'));
+                const defaultDay = document.getElementById('day1-content');
+                if (defaultDay) defaultDay.classList.add('active');
+            }
+        }
+        else if (pageId === 'exhibition') {
+            if (subPageId) {
+                showExhibitionSubpageContent(subPageId);
+            } else {
+                // Show overview by default
+                document.querySelectorAll('.exhibition-subpage-content').forEach(c => c.classList.remove('active'));
+                const overview = document.getElementById('exhibition-overview-content');
+                if (overview) overview.classList.add('active');
+            }
+        }
     }
 
-    // Handle special cases
-    if (pageId === 'convening') {
-        if (subPageId) {
-            showDayContent(subPageId);
-        } else {
-            // Show default (Day 1) if no specific day selected
-            document.querySelectorAll('.day-content').forEach(c => c.classList.remove('active'));
-            const defaultDay = document.getElementById('day1-content');
-            if (defaultDay) defaultDay.classList.add('active');
-        }
-    } 
-    else if (pageId === 'exhibition') {
-        if (subPageId) {
-            showExhibitionSubpageContent(subPageId);
-        } else {
-            // Show overview by default
-            document.querySelectorAll('.exhibition-subpage-content').forEach(c => c.classList.remove('active'));
-            const overview = document.getElementById('exhibition-overview-content');
-            if (overview) overview.classList.add('active');
-        }
-    }
-}
 
 
     // Dropdown functionality
@@ -115,7 +143,7 @@ function showPage(pageId, subPageId = null) {
             menu.querySelectorAll('a[data-day]').forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     // Close mobile menu
                     if (window.innerWidth <= 768) {
                         navigation.classList.remove('active');
@@ -132,7 +160,7 @@ function showPage(pageId, subPageId = null) {
             menu.querySelectorAll('a[data-subpage]').forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     // Close mobile menu
                     if (window.innerWidth <= 768) {
                         navigation.classList.remove('active');
@@ -147,29 +175,29 @@ function showPage(pageId, subPageId = null) {
         }
     });
 
-   // Show specific day content
-function showDayContent(dayId) {
-    document.querySelectorAll('.day-content').forEach(content => {
-        content.classList.remove('active');
-    });
-    const targetDayContent = document.getElementById(dayId + '-content');
-    if (targetDayContent) {
-        targetDayContent.classList.add('active');c
-    } else {
-        console.warn(`Day content '${dayId}-content' not found.`);
+    // Show specific day content
+    function showDayContent(dayId) {
+        document.querySelectorAll('.day-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        const targetDayContent = document.getElementById(dayId + '-content');
+        if (targetDayContent) {
+            targetDayContent.classList.add('active');
+        } else {
+            console.warn(`Day content '${dayId}-content' not found.`);
+        }
     }
-}
-   function showExhibitionSubpageContent(subPageId) {
-    document.querySelectorAll('.exhibition-subpage-content').forEach(content => {
-        content.classList.remove('active');
-    });
-    const targetSubpageContent = document.getElementById(subPageId + '-content');
-    if (targetSubpageContent) {
-        targetSubpageContent.classList.add('active');
-    } else {
-        console.warn(`Exhibition subpage '${subPageId}-content' not found.`);
+    function showExhibitionSubpageContent(subPageId) {
+        document.querySelectorAll('.exhibition-subpage-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        const targetSubpageContent = document.getElementById(subPageId + '-content');
+        if (targetSubpageContent) {
+            targetSubpageContent.classList.add('active');
+        } else {
+            console.warn(`Exhibition subpage '${subPageId}-content' not found.`);
+        }
     }
-}
     // Exhibition panel preview functionality
     document.querySelectorAll('.exhibition-list a').forEach(link => {
         link.addEventListener('click', function (e) {
@@ -199,9 +227,29 @@ function showDayContent(dayId) {
 
     // Carousel functionality
     const carouselTrack = document.getElementById('carousel-track');
-    const indicators = document.querySelectorAll('.indicator');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
+
     let currentSlide = 0;
-    const totalSlides = 5;
+    const totalSlides = slides.length;
+
+    // Clear old indicators and generate new ones dynamically
+    indicatorsContainer.innerHTML = "";
+    for (let i = 0; i < totalSlides; i++) {
+        const indicator = document.createElement("span");
+        indicator.classList.add("indicator");
+        indicator.dataset.slide = i;
+        if (i === 0) indicator.classList.add("active"); // first one active
+        indicatorsContainer.appendChild(indicator);
+
+        // click event for each indicator
+        indicator.addEventListener("click", () => {
+            currentSlide = i;
+            updateCarousel();
+        });
+    }
+
+    const indicators = document.querySelectorAll('.indicator');
 
     function nextSlide() {
         currentSlide = (currentSlide + 1) % totalSlides;
@@ -209,15 +257,14 @@ function showDayContent(dayId) {
     }
 
     function updateCarousel() {
-        if (!carouselTrack) return;
-        const translateX = -currentSlide * 20;
+        const translateX = -currentSlide * 100; // shift by 100% each
         carouselTrack.style.transform = `translateX(${translateX}%)`;
 
         indicators.forEach((indicator, index) => {
             indicator.classList.remove('active', 'active-green');
             if (index === currentSlide) {
-                if (index === 4) {
-                    indicator.classList.add('active-green');
+                if (index === totalSlides - 1) {
+                    indicator.classList.add('active-green'); // last one green
                 } else {
                     indicator.classList.add('active');
                 }
@@ -225,75 +272,104 @@ function showDayContent(dayId) {
         });
     }
 
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', function () {
-            currentSlide = index;
-            updateCarousel();
+    // Auto slide every 4s
+    setInterval(nextSlide, 4000);
+
+
+    
+
+    const popup = document.getElementById("image-popup");
+    const popupImage = document.getElementById("popup-image");
+    const closePopup = document.querySelector(".close-popup");
+    const triggers = document.querySelectorAll(".popup-trigger");
+
+    triggers.forEach(img => {
+        img.addEventListener("click", function () {
+            popup.style.display = "flex";
+            popupImage.src = this.src;
         });
     });
 
-    if (carouselTrack && indicators.length > 0) {
-        setInterval(nextSlide, 4000);
-    }
+    closePopup.addEventListener("click", function () {
+        popup.style.display = "none";
+    });
 
-    // Gallery popup functionality
-    const galleryGrid = document.getElementById('gallery-grid');
-    const imagePopup = document.getElementById('image-popup');
-    const popupImage = document.getElementById('popup-image');
-    const closePopup = document.querySelector('.close-popup');
+    popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+            popup.style.display = "none";
+        }
+    });
 
-    function showPopup(imageSrc) {
-        popupImage.src = imageSrc;
-        imagePopup.style.display = 'flex';
-    }
+   // PDF Popup functionality
+window.showPopupPDF = function (pdfUrl) {
+    const pdfPopup = document.getElementById('pdf-popup');
+    const pdfViewer = document.getElementById('pdf-viewer');
 
-    function hidePopup() {
-        imagePopup.style.display = 'none';
-        popupImage.src = '';
-    }
-
-    if (galleryGrid) {
-        galleryGrid.addEventListener('click', function (e) {
-            const clickedImage = e.target.closest('.gallery-image');
-            if (clickedImage) {
-                const imageSrc = clickedImage.src;
-                showPopup(imageSrc);
-            }
-        });
-    }
-
-    if (closePopup) {
-        closePopup.addEventListener('click', hidePopup);
-    }
-
-    if (imagePopup) {
-        imagePopup.addEventListener('click', function (e) {
-            if (e.target === imagePopup) {
-                hidePopup();
-            }
-        });
-    }
-
-    // PDF Popup functionality
-    window.showPopupPDF = function (pdfUrl) {
-        const pdfPopup = document.getElementById('pdf-popup');
-        const pdfViewer = document.getElementById('pdf-viewer');
+    // Detect small screen (mobile/tablet)
+    if (window.innerWidth < 768) {
+        // Open in new browser tab instead of iframe
+        window.open(pdfUrl, "_blank");
+    } else {
+        // Desktop: show in popup iframe
         pdfViewer.src = pdfUrl;
         pdfPopup.style.display = 'flex';
     }
+}
 
-    window.closePopupPDF = function () {
-        const pdfPopup = document.getElementById('pdf-popup');
-        const pdfViewer = document.getElementById('pdf-viewer');
-        pdfViewer.src = '';
-        pdfPopup.style.display = 'none';
+window.closePopupPDF = function () {
+    const pdfPopup = document.getElementById('pdf-popup');
+    const pdfViewer = document.getElementById('pdf-viewer');
+    pdfViewer.src = '';
+    pdfPopup.style.display = 'none';
+}
+
+const pdfPopup = document.getElementById('pdf-popup');
+if (pdfPopup) {
+    pdfPopup.addEventListener('click', function (e) {
+        if (e.target.id === 'pdf-popup') {
+            closePopupPDF();
+        }
+    });
+}
+
+
+    // YouTube Video Modal functionality
+    window.openYouTubeVideo = function (videoUrl) {
+        const modal = document.getElementById('youtube-modal');
+        const iframe = document.getElementById('youtube-iframe');
+
+        // Extract video ID and create embed URL
+        let videoId = '';
+        if (videoUrl.includes('youtu.be/')) {
+            videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+        } else if (videoUrl.includes('youtube.com/watch?v=')) {
+            videoId = videoUrl.split('v=')[1].split('&')[0];
+        }
+
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        iframe.src = embedUrl;
+        modal.style.display = 'flex';
     }
 
-    const pdfPopup = document.getElementById('pdf-popup');
-    if (pdfPopup) {
-        pdfPopup.addEventListener('click', function (e) {
-            if (e.target.id === 'pdf-popup') {
-                closePopupPDF();
+    window.closeYouTubeModal = function () {
+        const modal = document.getElementById('youtube-modal');
+        const iframe = document.getElementById('youtube-iframe');
+        iframe.src = '';
+        modal.style.display = 'none';
+    }
+
+    // YouTube modal close functionality
+    const youtubeModal = document.getElementById('youtube-modal');
+    const closeYoutubeModal = document.querySelector('.close-youtube-modal');
+
+    if (closeYoutubeModal) {
+        closeYoutubeModal.addEventListener('click', closeYouTubeModal);
+    }
+
+    if (youtubeModal) {
+        youtubeModal.addEventListener('click', function (e) {
+            if (e.target === youtubeModal) {
+                closeYouTubeModal();
             }
         });
     }
@@ -425,13 +501,13 @@ function showDayContent(dayId) {
     document.body.style.transition = 'opacity 0.5s ease';
 
     // Handle window resize for mobile menu
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             // Reset mobile menu state when switching to desktop
             navigation.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             document.body.classList.remove('mobile-menu-open');
-            
+
             // Reset dropdown states
             document.querySelectorAll('.dropdown').forEach(dropdown => {
                 dropdown.classList.remove('active');
@@ -439,6 +515,8 @@ function showDayContent(dayId) {
         }
     });
 });
+
+
 
 // Pop-up Panel (Modal) functionality
 const panelImages = document.querySelectorAll('.panel-image');
