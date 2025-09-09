@@ -1,0 +1,377 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "convening": "CONVENING",
+    "exhibition": "EXHIBITION",
+    "resources": "RESOURCES",
+    "gallery": "GALLERY",
+    "news": "NEWS",
+    "partners": "PARTNERS"
+  },
+  "topBar": {
+    "nammaRaste": "NAMMA RASTE 2025",
+    "kannada": "Kannada",
+    "english": "English"
+  },
+  "home": {
+    "scrollText": "SCROLL OF",
+    "glimpseText": "GLIMPSE VIDEO",
+    "plusText": "+ PICTURES"
+  },
+  "about": {
+    "title": "ABOUT",
+    "whatIsTitle": "What is Namma Raste?",
+    "description1": "Bengaluru is at a crossroads today. While it continues to build on its success as an innovation hub and India's Silicon Valley, it needs to rapidly adapt to evolving mobility patterns, driven by new opportunities in the city. In 2023, the Bruhat Bengaluru Mahanagara Palike (BBMP), in collaboration with WRI India, launched Namma Raste (our streets). The annual exhibition and convening aims to create discourse around the mobility needs of the city bringing together key government stakeholders, communities, partner organisations and academia.",
+    "nammaRaste2023": "Namma Raste 2023",
+    "description2023": "focused on safe and climate resilient streets with a focus on human-centric and holistic street design strategies.",
+    "nammaRaste2025": "Namma Raste 2025",
+    "description2025": "took a holistic, data-driven approach to address urban mobility and invited citizens to contribute to shaping a more efficient and inclusive transport future.",
+    "explorationTitle": "was an exploration that served as:",
+    "campaign": "A CAMPAIGN",
+    "campaignDesc": "exploring Bengaluru's evolving sustainable mobility landscape.",
+    "exhibition": "An EXHIBITION",
+    "exhibitionDesc": "to experience Bengaluru's public transport transformation through data-driven narratives, interactive maps, and visual storytelling on buses, metros, non-motorized transport, and road infrastructure.",
+    "convening": "A CONVENING",
+    "conveningDesc": "of policymakers, urban designers, startups, and civic groups to discuss shaping a more connected and sustainable transport ecosystem.",
+    "platform": "A PLATFORM",
+    "platformDesc": "for mobility experts, civic groups, students etc. to engage in insightful sessions and interactive activities aimed at raising awareness on the city's mobility challenges and solutions.",
+    "stats": {
+      "attendees": "Approx. 5000 attendees",
+      "speakers": "70 Speakers",
+      "organisations": " 68 Government & Partner Organisations",
+      "schools": "16+ Schools & Colleges"
+    },
+    "accessibility": "Namma Raste 2025 event was made accessible with the support",
+    "apd": "APD",
+    "and": "and",
+    "college": "Ramaiah College of Law"
+  },
+  "convening": {
+    "title": "CONVENING",
+    "day1": "Day 1",
+    "day2": "Day 2",
+    "day3": "Day 3",
+    "sessions": {
+      "day1": {
+        "session1": {
+          "time": "10:00 am – 12:00 pm",
+          "title": "Launch of Namma Raste 2025 & Kaipidi",
+          "speakers": [
+            "Shri DK Shivakumar, Deputy Chief Minister of Karnataka",
+            "Shri Uma Shankar, IAS, Additional Chief Secretary, UDD",
+            "Shri Tushar Giri Nath, Chief Commissioner, BBMP",
+            "Dr. Avinash Menon, IAS, Special Commissioner (Projects), BBMP",
+            "Dr B S Prahallad, PhD, Chairman, SOP Committee",
+            "SOP Committee Members",
+            "Madhav Pai, CEO, WRI India"
+          ]
+        },
+        "session2": {
+          "time": "12:00 pm – 12:30 pm",
+          "title": "Sustainable Transport & Livability",
+          "speakers": [
+            "Prof. Ashish Verma, IISc Sustainable Transportation Lab"
+          ]
+        },
+        "session3": {
+          "time": "02:00 pm – 03:00 pm",
+          "title": "Media and Mobility: Rethinking the Narrative",
+          "speakers": [
+            "KC Deepika, City Editor, The Hindu",
+            "Nandini Chandrashekar, Associate Editor, The News Minute",
+            "Rasheed Kappan, Multimedia Journalist",
+            "Sathyanarayanan Sankaran, Host, Oogi Labs",
+            "Harish Upadhya, Assistant Editor, CNN News18",
+            "Jimmy Xavier, Media Personality",
+            "Srinivas Alavilli, Fellow, WRI India (moderator)"
+          ]
+        },
+        "session4": {
+          "time": "03:00 pm – 04:00 pm",
+          "title": "How Do We Manage Bengaluru's Traffic?",
+          "speakers": [
+            "Special Address by MN Anucheth, IPS, Joint Commissioner of Police (Traffic) Bengaluru",
+            "Followed by a session with the Joint Commissioner of Police & Venkata Subbarao Chunduru, Director, Arcadis IBI Group, moderated by Dhawal Ashar, WRI India."
+          ]
+        },
+        "session5": {
+          "time": "04:00 pm – 05:00 pm",
+          "title": "Bringing Jobs Closer to Mass Transit",
+          "speakers": [
+            "Dr. B.S. Prahalad, Engineer-in-Chief, BBMP",
+            "Naresh Narasimhan, MOD Foundation",
+            "Rachana Singh, BACL Airport City Ltd",
+            "Jaya Dhindaw, WRI India (moderator)"
+          ]
+        },
+        "session6": {
+          "time": "05:00 pm – 06:00 pm",
+          "title": "Beyond the Echo Chambers",
+          "speakers": [
+            "Sapna Bhawnani, VP Communications & CSR, Alstom",
+            "Deepesh Agarwal, CEO, MoveInSync",
+            "Manas Das, President, ORRCA",
+            "Sameer Shisodia, CEO, Rainmatter Foundation",
+            "Pawan Mulukutla, WRI India (moderator)"
+          ]
+        }
+      },
+      "day2": {
+        "session1": {
+          "time": "10:00 am – 12:00 pm",
+          "title": "Capacity Building for BBMP Engineers",
+          "speakers": [
+            "Dr Shalini Rajneesh, IAS, Chief Secretary, GoK (Inauguration & Presidential Address)",
+            "Dr. B.S. Prahallad, Engineer-in-Chief, BBMP (Welcome)",
+            "Shri Tushar Giri Nath, IAS, Chief Commissioner, BBMP (Keynote Address)",
+            "Dr. Avinash Menon, IAS, Special Commissioner (Projects), BBMP",
+            "M Lokesh, Chief Engineer - Project Central, BBMP (Vote of Thanks)",
+            "Workshop by BBMP, IISc, WRI India & MOD Foundation (with mayaPRAXIS and Sensing Local)"
+          ]
+        },
+        "session2": {
+          "time": "12:00 pm – 12:30 pm",
+          "title": "Creating Better Streets for Bengaluru",
+          "speakers": [
+            "Naresh Narasimhan, MOD Foundation",
+            "Vijay Narnapatti, mayaPRAXIS",
+            "Ratnakara Reddy, Infra Support"
+          ]
+        },
+        "session3": {
+          "time": "12:30 pm – 01:00 pm",
+          "title": "Launch of Safe Access to Schools Program",
+          "speakers": [
+            "Preeti Gehlot, IAS, Special Commissioner (Education), BBMP",
+            "M Lokesh, Chief Engineer - Project Central, BBMP",
+            "Hemalatha, Superintending Engineer - Project Central, BBMP",
+            "Jaya Dhindaw, WRI India",
+            "Dhawal Ashar, WRI India"
+          ]
+        },
+        "session4": {
+          "time": "03:00 pm – 04:00 pm",
+          "title": "Public Transport's Tech Evolution",
+          "speakers": [
+            "Short presentations by:",
+            "Tummoc, MoveInSync, Voltrix, Namma Yatri, Bengawalk"
+          ]
+        },
+        "session5": {
+          "time": "04:15 pm – 04:45 pm",
+          "title": "How Tech Innovations Are Changing the Way Bengaluru Moves",
+          "speakers": [
+            "Diwakar Menon, APD",
+            "Malini Goyal, UnboxingBlr, OneTAC",
+            "Janet Joseph, MBRDI",
+            "Rajiv Ravindran, Namma Yatri",
+            "Hiranmay Mallick, Tummoc",
+            "Raghu Krishnapuram, IUDX"
+          ]
+        },
+        "session6": {
+          "time": "05:15 pm – 06:00 pm",
+          "title": "Beyond the Echo Chambers",
+          "speakers": [
+            "Kailash Nadh, CTO Zerodha & Founder, Rainmatter Foundation",
+            "In conversation with Madhav Pai, CEO, WRI India"
+          ]
+        }
+      },
+      "day3": {
+        "session1": {
+          "time": "10:00 am – 11:30 am",
+          "title": "Gender Responsive Mobility",
+          "speakers": [
+            "The Dialogue: Gender and Mobility intends to deliberate on how transport policies, infrastructure, and planning can become more inclusive.",
+            "GT Prabhakar Reddy, Chief Traffic Manager (Operation), BMTC",
+            "Ann Jacob, Chief Urban Designer - Centre for Urban Design & Senior Urban Planner – DULT"
+          ]
+        },
+        "session2": {
+          "time": "11:30 am – 01:00 pm",
+          "title": "Driving Community Action for Sustainable Mobility",
+          "speakers": [
+            "10-Minute presentations followed by round table from partners:",
+            "ITDP, Safety for Women, HSR Citizen Forum & Cyclists Group, Our Mobility Our Voice (Inventure Academy), Save Our Sarjapura Road, B.PAC, Sensing Local Foundation, ARDU, Compartment S4"
+          ]
+        },
+        "session3": {
+          "time": "02:00 pm – 03:00 pm",
+          "title": "Right Antha Heli",
+          "speakers": [
+            "A quiz for all BMTC fans conducted by Friends of BMTC",
+            "In collaboration with Nithin Kamath, Writer & Comic"
+          ]
+        },
+        "session4": {
+          "time": "03:00 pm – 04:00 pm",
+          "title": "Walk-a-luru: Where is my Footpath?",
+          "speakers": [
+            "Arun Pai, Founder, BangaloreWALKS"
+          ]
+        }
+      }
+    },
+    "videoTitles": {
+      "launch": "Launch of Namma Raste 2025 & Kaipidi",
+      "launchDesc": "'Namma Raste Kaipidi', an illustrated guidebook...",
+      "sustainable": "Sustainable Transport & Livability",
+      "sustainableDesc": "Talk by Prof. Ashish Verma",
+      "media": "Media and Mobility: Rethinking the Narrative",
+      "mediaDesc": "Panel with KC Deepika, Nandini Chandrashekar, Rasheed Kappan, and others.",
+      "traffic": "How Do We Manage Bengaluru's Traffic?",
+      "trafficDesc": "Special Address by MN Anucheth, IPS, plus expert discussion.",
+      "jobs": "Bringing Jobs Closer to Mass Transit",
+      "jobsDesc": "Insights from Dr. B.S. Prahalad, Naresh Narasimhan, and others.",
+      "echoChambers": "Beyond the Echo Chambers",
+      "echoChambersDesc": "Panel with Sapna Bhawnani, Deepesh Agarwal, Manas Das, Sameer Shisodia.",
+      "capacity": "Capacity Building for BBMP Engineers",
+      "capacityDesc": "Workshop with BBMP, IISc, WRI India & MOD Foundation.",
+      "streets": "Creating Better Streets for Bengaluru",
+      "streetsDesc": "Fireside chat with Naresh Narasimhan, Vijay Narnapatti & Ratnakara Reddy.",
+      "schools": "Launch of Safe Access to Schools Program",
+      "schoolsDesc": "Program launch with BBMP & WRI India leadership.",
+      "techEvolution": "Public Transport's Tech Evolution",
+      "techEvolutionDesc": "Showcasing innovations from Tummoc, MoveInSync, Voltrix, Namma Yatri, Bengawalk.",
+      "techInnovations": "How Tech Innovations Are Changing the Way Bengaluru Moves",
+      "techInnovationsDesc": "Panel with Diwakar Menon, Malini Goyal, Janet Joseph, Rajiv Ravindran, Hiranmay Mallick & Raghu Krishnapuram.",
+      "echoChambers2": "Beyond the Echo Chambers",
+      "echoChambers2Desc": "Conversation with Kailash Nadh & Madhav Pai on Open Data in Mobility.",
+      "gender": "Gender Responsive Mobility",
+      "genderDesc": "Discussion on gender-inclusive transport planning and infrastructure.",
+      "community": "Driving Community Action for Sustainable Mobility",
+      "communityDesc": "Partner presentations and round table on community-led mobility solutions.",
+      "quiz": "Right Antha Heli",
+      "quizDesc": "BMTC Quiz conducted by Friends of BMTC & Nithin Kamath.",
+      "footpath": "Walk-a-luru: Where is my Footpath?",
+      "footpathDesc": "Talk by Arun Pai, BangaloreWALKS, on pedestrian issues in Bengaluru."
+    }
+  },
+  "exhibition": {
+    "title": "EXHIBITION",
+    "description": "The Namma Raste 2025 exhibition panels offered a rich, immersive journey into Bengaluru's evolving urban mobility landscape.",
+    "storyboards": "The storyboards, interactive maps and panels",
+    "storyboards2": "data visualizations to illustrate the transformation of public transport in the city, including buses, metro, footpaths, cycling lanes, and non-motorized transport.",
+    "welcome": "Welcome to the Bengaluru Exhibition!",
+    "welcomeDesc": "Explore the vibrant dynamics of Bengaluru, from its urban evolution and mobility solutions to the key governmental initiatives and the contributions of esteemed partner organizations shaping its future. Navigate through the sections above to delve deeper into each fascinating aspect of our city.",
+    "movingBengaluru": "MOVING BENGALURU",
+    "howDoesBengaluruMove": "HOW DOES BENGALURU MOVE?",
+    "panels": {
+      "panel1": "Built footprint evolution across Bengaluru (1985–2019)",
+      "panel2": "Vicious or virtuous?",
+      "panel3": "Expanding tracks, connecting futures",
+      "panel4": "BMTC - Keeps Bengaluru Moving",
+      "panel5": "The rise of shared mobility",
+      "panel6": "Connecting the unconnected",
+      "panel7": "Bridging the Gap",
+      "panel8": "Bringing jobs Closer",
+      "panel9": "State of Road Safety in Bengaluru"
+    },
+    "govtPanels": "GOVERNMENT PANELS",
+    "govtDepartments": "GOVERNMENT DEPARTMENTS",
+    "govtDescriptions": {
+      "bbmp": "BBMP - Bruhat Bengaluru Mahanagara Palike initiatives and urban development projects.",
+      "bmrcl": "BMRCL - Bangalore Metro Rail Corporation Limited metro expansion projects and connectivity.",
+      "btp": "BTP - Bangalore Traffic Police traffic management and road safety initiatives.",
+      "dult": "DULT - Directorate of Urban Land Transport sustainable mobility solutions.",
+      "kridge": "KRIDE - Karnataka Road Infrastructure Development Corporation road development projects."
+    },
+    "partnersPanels": "PARTNERS PANELS",
+    "partnerOrganizations": "PARTNER ORGANIZATIONS"
+  },
+  "resources": {
+    "title": "RESOURCES",
+    "guidebook": {
+      "title": "Namma Raste Kaipidi (Guidebook): Towards Safe, Inclusive, and Resilient Roads in Bengaluru",
+      "description": "‘Namma Raste Kaipidi’ is a guidebook that outlines best practices in design, construction, operation and maintenance of roads. It aims to improve Bengaluru’s 12,000 km road network, ensuring that they are designed for long-term sustainability and resilience.This document was prepared as an outcome of the discussions and recommendations under the SOP Committee formed by BBMP under the chairmanship of Engineer in Chief, BBMP. It has been curated and compiled by the teams of ‘IISc Sustainable Transportation Lab’ and ‘WRI India’ led by Prof. Ashish Verma, IISc and Srinivas Alavilli, WRI India and authored by Dr. Furqan Bhat of IISc Sustainable Transportation Lab and Chetan Sodaye, Krishna Priya Poroori, Arnav Murulidhar of WRI India and supported by Madhav Pai, Pawan Mulukutla, Dhawal Ashar, Gagana, Sudharsan, Priya Narayanan, Arun Manohar, Avtar Bhalla, Aashima Bhandari, Anya George, Anindita Bhattacharjee, Ankita Rajeshwari and Safia Zahid of WRI India.",
+      "link": "Namma Raste Kaipidi Pdf"
+    },
+    "corridors": {
+      "title": "High Density Corridors Bengaluru - Design Manual",
+      "description": "The High Density Corridor (HDC) initiative reimagines Bengaluru’s busiest roads as safer, efficient, and inclusive mobility corridors. This manual, prepared by mayaPRAXIS with BBMP, DULT, and guidance from Transport Planner Rathnakara Reddy, compiles design standards and strategies as a reference for engineers, planners, and communities to create resilient and accessible streets.",
+      "link": "High Density Bengaluru Pdf"
+    },
+    "streets": {
+      "title": "Streets and Intersection - Design Checklist for streets and intersections for infants, toddlers and caregivers.",
+      "description": "An illustrated design checklist and guideline document for creating streets that are safe, inclusive, and engaging for young children and their caregivers. Intended for government agencies and urban practitioners, it provides practical design elements to plan child- and caregiver-friendly streets in cities and neighbourhoods.",
+      "link": "Streets and Intersection Pdf"
+    },
+    "handbook": {
+      "title": "Namma Raste Kaipidi Illustrated Handbook",
+      "english": "ENGLISH",
+      "kannada": "KANNADA",
+      "englishLink": "Namma Raste Kaipidi English Pdf",
+      "kannadaLink": "Namma Raste Kaipidi Kannada Pdf",
+      "description": "MOD Foundation, in a first-of-its-kind Illustrated Handbook, bridges the gap between policy and practice, ensuring that Bengaluru’s streets are designed to be pedestrian-friendly, utility-smart, and future-ready. The Illustrated Handbook has been adapted from the Namma Raste Kaipidi (Manual), originally prepared as an outcome of the discussions and recommendations under the SOP Committee formed by BBMP office order BBMP/EIC/PR/654/2024-25 dated 19/11/2024."
+    },
+    "documentNote": "*Document to be made available soon.*"
+  },
+  "gallery": {
+    "title": "GALLERY",
+    "sections": {
+      "exhibition": {
+        "title": "Exhibition",
+        "description": "People experiencing Bengaluru's public transport transformation through data-driven narratives, interactive maps, and visual storytelling on buses, metro, non-motorized transport, and pedestrian infrastructure."
+      },
+      "schoolStudents": {
+        "title": "School Students",
+        "description": "Students engaging in and participating in Namma Raste 2025."
+      },
+      "studentsActivity": {
+        "title": "Students Activity",
+        "description": "Students sharing their ideas for safe and accessible routes to Schools."
+      },
+      "presentations": {
+        "title": "Presentations",
+        "description": "City stakeholders and mobility experts sharing insights on Bengaluru's current and future mobility landscape."
+      },
+      "participation": {
+        "title": "Citizen Participation",
+        "description": "Citizens' participation in Namma Raste 2025 contributing to collective learning, innovation, and collaboration to shape future mobility solutions for the city."
+      }
+    }
+  },
+  "news": {
+    "title": "NEWS",
+    "articles": {
+      "article1": {
+        "title": "Namma Raste Panel Calls for Gender-Responsive Mobility",
+        "description": "Highlights from Deccan Herald on inclusive mobility in Bengaluru."
+      },
+      "article2": {
+        "title": "Need for Better Footpaths at Namma Raste",
+        "description": "The Hindu coverage on walkability and urban design."
+      },
+      "article3": {
+        "title": "Bengaluru Roads Are Choking",
+        "description": "Top traffic cop emphasizes that road expansion is not the solution."
+      },
+      "article4": {
+        "title": "'Namma Raste' Guidebook",
+        "description": "Guidebook recommends a centralised dashboard for roadwork coordination."
+      },
+      "article5": {
+        "title": "Maintain Uniformity on Roads: DCM",
+        "description": "Prajavani reports on ensuring consistent road standards in Bengaluru."
+      },
+      "article6": {
+        "title": "Road Development Is Everyone's Responsibility",
+        "description": "Chief Secretary Shalini Rajneesh's statement reported in Vijayavani."
+      },
+      "article7": {
+        "title": "BBMP Workshop: Namma Raste 2025",
+        "description": "OneIndia Kannada reports on transport system improvements."
+      }
+    }
+  },
+  "partners": {
+    "title": "Partners"
+  },
+  "footer": {
+    "accessibility": "Namma Raste 2025 event was made accessible with the support of",
+    "and": "and",
+    "rightsReserved": "RIGHTS RESERVED © 2025"
+  }
+}

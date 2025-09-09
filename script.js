@@ -1,102 +1,255 @@
-// Navigation functionality
-document.addEventListener('DOMContentLoaded', function () {
-
-    const agendaItems = document.querySelectorAll(".agenda-item");
-    const videoCards = document.querySelectorAll(".video-card");
-
-    // Left menu click → show respective video card
-    agendaItems.forEach(item => {
-        item.addEventListener("click", () => {
-            agendaItems.forEach(i => i.classList.remove("active"));
-            videoCards.forEach(v => v.classList.remove("active"));
-
-            item.classList.add("active");
-            const target = item.getAttribute("data-video");
-            document.getElementById(target).classList.add("active");
-        });
-    });
-
-    
-
-   // Thumbnail click → replace with iframe video
-    document.querySelectorAll(".thumbnail").forEach(thumbnail => {
-        thumbnail.addEventListener("click", function () {
-            const youtubeURL = this.getAttribute("data-youtube") + "?autoplay=1";
-            this.outerHTML = `<iframe class="agenda-video" src="${youtubeURL}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-        });
-    });
-
-    // Mobile menu functionality
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const navigation = document.getElementById('navigation');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    // Mobile menu toggle
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function () {
-            navigation.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('active');
-            document.body.classList.toggle('mobile-menu-open');
-        });
+// Translation system
+class TranslationSystem {
+    constructor() {
+        this.translations = {};
+        this.currentLang = localStorage.getItem('selectedLanguage') || 'en';
+        this.init();
     }
 
-    // Close mobile menu when overlay is clicked
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', function () {
-            navigation.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.classList.remove('mobile-menu-open');
-        });
+    async init() {
+        await this.loadTranslations();
+        this.setLanguage(this.currentLang);
+        this.setupLanguageSelector();
+        this.initializeWebsite();
     }
 
-    // Handle dropdown toggles in mobile
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
-            if (window.innerWidth <= 768) {
+    async loadTranslations() {
+        try {
+            const [enResponse, knResponse] = await Promise.all([
+                fetch('resources/en.json'),
+                fetch('resources/kn.json')
+            ]);
+
+            this.translations.en = await enResponse.json();
+            this.translations.kn = await knResponse.json();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+            // Fallback to default English text if JSON files fail to load
+            this.translations.en = {};
+            this.translations.kn = {};
+        }
+    }
+
+    setupLanguageSelector() {
+        const langLinks = document.querySelectorAll('.lang-link');
+        langLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const dropdown = this.closest('.dropdown');
-                dropdown.classList.toggle('active');
+                const selectedLang = link.getAttribute('data-lang');
+                this.setLanguage(selectedLang);
+            });
+        });
+    }
+
+    setLanguage(lang) {
+        // Add transition effect
+        document.body.classList.add('lang-switching');
+        
+        this.currentLang = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        
+        // Update active language selector
+        document.querySelectorAll('.lang-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-lang') === lang) {
+                link.classList.add('active');
             }
         });
-    });
 
+        // Update document language attribute
+        document.documentElement.lang = lang === 'kn' ? 'kn' : 'en';
 
+        // Translate all content
+        setTimeout(() => {
+            this.translatePage();
+            document.body.classList.remove('lang-switching');
+        }, 100);
+    }
 
-    // Get all navigation links and pages
-    const pages = document.querySelectorAll('.page-content');
-    const mainContentArea = document.getElementById('main-content');
+    translatePage() {
+        const translations = this.translations[this.currentLang] || this.translations['en'];
+        
+        // Translate simple text elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const translation = this.getTranslation(translations, key);
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
 
-    // Deactivate all pages and links first
-    navLinks.forEach(item => item.classList.remove('active'));
-    pages.forEach(page => page.classList.remove('active'));
+        // Translate elements with key-based translation
+        document.querySelectorAll('[data-translate-key]').forEach(element => {
+            const key = element.getAttribute('data-translate-key');
+            const translation = this.getTranslation(translations, key);
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
 
-    // Set initial page
-    showPage('home');
+        // Handle speaker arrays for convening sessions
+        document.querySelectorAll('[data-translate-array]').forEach(element => {
+            const key = element.getAttribute('data-translate-array');
+            const speakers = this.getTranslation(translations, key);
+            if (speakers && Array.isArray(speakers)) {
+                element.innerHTML = speakers.map(speaker => `<p>${speaker}</p>`).join('');
+            }
+        });
 
-    // Navigation bar functionality
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
+        // Update page title
+        const titleElement = document.querySelector('title[data-translate]');
+        if (titleElement) {
+            const titleKey = titleElement.getAttribute('data-translate');
+            const titleTranslation = this.getTranslation(translations, titleKey);
+            if (titleTranslation) {
+                titleElement.textContent = titleTranslation;
+            }
+        }
+    }
 
-            // Close mobile menu when a link is clicked
-            if (window.innerWidth <= 768) {
+    getTranslation(translations, key) {
+        return key.split('.').reduce((obj, k) => obj && obj[k], translations);
+    }
+}
+
+// Website functionality
+class Website {
+    constructor() {
+        this.currentSlide = 0;
+        this.totalSlides = 0;
+        this.zoomLevel = 1;
+        this.isDragging = false;
+        this.startX = 0;
+        this.startY = 0;
+        this.translateX = 0;
+        this.translateY = 0;
+        this.initializeComponents();
+    }
+
+    initializeComponents() {
+        this.setupMobileMenu();
+        this.setupNavigation();
+        this.setupCarousel();
+        this.setupConveningFunctionality();
+        this.setupExhibitionFunctionality();
+        this.setupModals();
+        this.setupGallery();
+        this.setupFlipBookViewer();
+        this.setupAnimations();
+        this.setupPanelZoom();
+    }
+
+    setupMobileMenu() {
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navigation = document.getElementById('navigation');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navigation.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.classList.toggle('mobile-menu-open');
+            });
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', () => {
                 navigation.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 document.body.classList.remove('mobile-menu-open');
-            }
+            });
+        }
 
-            // Extract main and optional sub-page
-            const targetPage = this.getAttribute('data-page');
-            const subPageId = this.getAttribute('data-subpage') || null;
-
-            showPage(targetPage, subPageId);
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.dropdown');
+                    dropdown.classList.toggle('active');
+                }
+            });
         });
-    });
 
-    // Show page function
-    function showPage(pageId, subPageId = null) {
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navigation.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    setupNavigation() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-content');
+        const navigation = document.getElementById('navigation');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        // Set initial page
+        this.showPage('home');
+
+        // Main navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Close mobile menu
+                if (window.innerWidth <= 768) {
+                    navigation.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.classList.remove('mobile-menu-open');
+                }
+
+                const targetPage = link.getAttribute('data-page');
+                const subPageId = link.getAttribute('data-subpage') || null;
+                this.showPage(targetPage, subPageId);
+            });
+        });
+
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const menu = dropdown.querySelector('.dropdown-menu');
+
+            if (menu) {
+                // Convening dropdown days
+                menu.querySelectorAll('a[data-day]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (window.innerWidth <= 768) {
+                            navigation.classList.remove('active');
+                            mobileMenuOverlay.classList.remove('active');
+                            document.body.classList.remove('mobile-menu-open');
+                        }
+                        const targetDay = link.getAttribute('data-day');
+                        this.showPage('convening', targetDay);
+                    });
+                });
+
+                // Exhibition dropdown subpages
+                menu.querySelectorAll('a[data-subpage]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (window.innerWidth <= 768) {
+                            navigation.classList.remove('active');
+                            mobileMenuOverlay.classList.remove('active');
+                            document.body.classList.remove('mobile-menu-open');
+                        }
+                        const targetSubpage = link.getAttribute('data-subpage');
+                        this.showPage('exhibition', targetSubpage);
+                    });
+                });
+            }
+        });
+    }
+
+    showPage(pageId, subPageId = null) {
+        // Add loading effect
+        document.body.classList.add('loading');
+
         // Hide all pages
         document.querySelectorAll('.page-content').forEach(page => {
             page.classList.remove('active');
@@ -106,165 +259,106 @@ document.addEventListener('DOMContentLoaded', function () {
         const targetPage = document.getElementById(pageId + '-page');
         if (targetPage) {
             targetPage.classList.add('active');
+            targetPage.classList.add('page-transition');
         }
 
         // Handle special cases
         if (pageId === 'convening') {
             if (subPageId) {
-                showDayContent(subPageId);
+                this.showDayContent(subPageId);
             } else {
-                // Show default (Day 1) if no specific day selected
                 document.querySelectorAll('.day-content').forEach(c => c.classList.remove('active'));
                 const defaultDay = document.getElementById('day1-content');
                 if (defaultDay) defaultDay.classList.add('active');
             }
-        }
-        else if (pageId === 'exhibition') {
+        } else if (pageId === 'exhibition') {
             if (subPageId) {
-                showExhibitionSubpageContent(subPageId);
+                this.showExhibitionSubpageContent(subPageId);
             } else {
-                // Show overview by default
                 document.querySelectorAll('.exhibition-subpage-content').forEach(c => c.classList.remove('active'));
                 const overview = document.getElementById('exhibition-overview-content');
                 if (overview) overview.classList.add('active');
             }
         }
+
+        // Remove loading effect
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+        }, 300);
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-
-
-    // Dropdown functionality
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-
-        if (menu) {
-            // CONVENING dropdown days
-            menu.querySelectorAll('a[data-day]').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Close mobile menu
-                    if (window.innerWidth <= 768) {
-                        navigation.classList.remove('active');
-                        mobileMenuOverlay.classList.remove('active');
-                        document.body.classList.remove('mobile-menu-open');
-                    }
-
-                    const targetDay = this.getAttribute('data-day');
-                    showPage('convening', targetDay);
-                });
-            });
-
-            // EXHIBITION dropdown subpages
-            menu.querySelectorAll('a[data-subpage]').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Close mobile menu
-                    if (window.innerWidth <= 768) {
-                        navigation.classList.remove('active');
-                        mobileMenuOverlay.classList.remove('active');
-                        document.body.classList.remove('mobile-menu-open');
-                    }
-
-                    const targetSubpage = this.getAttribute('data-subpage');
-                    showPage('exhibition', targetSubpage);
-                });
-            });
-        }
-    });
-
-    // Show specific day content
-    function showDayContent(dayId) {
+    showDayContent(dayId) {
         document.querySelectorAll('.day-content').forEach(content => {
             content.classList.remove('active');
         });
         const targetDayContent = document.getElementById(dayId + '-content');
         if (targetDayContent) {
             targetDayContent.classList.add('active');
-        } else {
-            console.warn(`Day content '${dayId}-content' not found.`);
         }
     }
-    function showExhibitionSubpageContent(subPageId) {
+
+    showExhibitionSubpageContent(subPageId) {
         document.querySelectorAll('.exhibition-subpage-content').forEach(content => {
             content.classList.remove('active');
         });
         const targetSubpageContent = document.getElementById(subPageId + '-content');
         if (targetSubpageContent) {
             targetSubpageContent.classList.add('active');
-        } else {
-            console.warn(`Exhibition subpage '${subPageId}-content' not found.`);
         }
     }
-    // Exhibition panel preview functionality
-    document.querySelectorAll('.exhibition-list a').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
 
-            // Active link highlight
-            this.closest('.exhibition-list').querySelectorAll('a').forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
+    setupCarousel() {
+        const carouselTrack = document.getElementById('carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicatorsContainer = document.querySelector('.carousel-indicators');
 
-            // Panel container in same exhibition section
-            const panelContainer = this.closest('.exhibition-container').querySelector('.panel-preview-area');
-            if (!panelContainer) return;
+        if (!carouselTrack || !slides.length) return;
 
-            // Hide all panels inside that container
-            panelContainer.querySelectorAll('.panel-item, .govt-panel-item, .partners-panel-item').forEach(p => {
-                p.style.display = 'none';
+        this.totalSlides = slides.length;
+
+        // Generate indicators dynamically
+        indicatorsContainer.innerHTML = "";
+        for (let i = 0; i < this.totalSlides; i++) {
+            const indicator = document.createElement("span");
+            indicator.classList.add("indicator");
+            indicator.dataset.slide = i;
+            if (i === 0) indicator.classList.add("active");
+            indicatorsContainer.appendChild(indicator);
+
+            indicator.addEventListener("click", () => {
+                this.currentSlide = i;
+                this.updateCarousel();
             });
+        }
 
-            // Show selected panel
-            const panelId = this.getAttribute('data-panel-id');
-            const panel = document.getElementById(panelId + '-content');
-            if (panel) {
-                panel.style.display = 'block';
-            }
-        });
-    });
-
-    // Carousel functionality
-    const carouselTrack = document.getElementById('carousel-track');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-
-    // Clear old indicators and generate new ones dynamically
-    indicatorsContainer.innerHTML = "";
-    for (let i = 0; i < totalSlides; i++) {
-        const indicator = document.createElement("span");
-        indicator.classList.add("indicator");
-        indicator.dataset.slide = i;
-        if (i === 0) indicator.classList.add("active"); // first one active
-        indicatorsContainer.appendChild(indicator);
-
-        // click event for each indicator
-        indicator.addEventListener("click", () => {
-            currentSlide = i;
-            updateCarousel();
-        });
+        // Auto slide
+        setInterval(() => {
+            this.nextSlide();
+        }, 4000);
     }
 
-    const indicators = document.querySelectorAll('.indicator');
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateCarousel();
     }
 
-    function updateCarousel() {
-        const translateX = -currentSlide * 100; // shift by 100% each
-        carouselTrack.style.transform = `translateX(${translateX}%)`;
+    updateCarousel() {
+        const carouselTrack = document.getElementById('carousel-track');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        if (carouselTrack) {
+            const translateX = -this.currentSlide * 100;
+            carouselTrack.style.transform = `translateX(${translateX}%)`;
+        }
 
         indicators.forEach((indicator, index) => {
             indicator.classList.remove('active', 'active-green');
-            if (index === currentSlide) {
-                if (index === totalSlides - 1) {
-                    indicator.classList.add('active-green'); // last one green
+            if (index === this.currentSlide) {
+                if (index === this.totalSlides - 1) {
+                    indicator.classList.add('active-green');
                 } else {
                     indicator.classList.add('active');
                 }
@@ -272,319 +366,470 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Auto slide every 4s
-    setInterval(nextSlide, 4000);
+    setupConveningFunctionality() {
+        const agendaItems = document.querySelectorAll(".agenda-item");
+        const videoCards = document.querySelectorAll(".video-card");
 
+        agendaItems.forEach(item => {
+            item.addEventListener("click", () => {
+                agendaItems.forEach(i => i.classList.remove("active"));
+                videoCards.forEach(v => v.classList.remove("active"));
 
-    
-
-    const popup = document.getElementById("image-popup");
-    const popupImage = document.getElementById("popup-image");
-    const closePopup = document.querySelector(".close-popup");
-    const triggers = document.querySelectorAll(".popup-trigger");
-
-    triggers.forEach(img => {
-        img.addEventListener("click", function () {
-            popup.style.display = "flex";
-            popupImage.src = this.src;
-        });
-    });
-
-    closePopup.addEventListener("click", function () {
-        popup.style.display = "none";
-    });
-
-    popup.addEventListener("click", function (e) {
-        if (e.target === popup) {
-            popup.style.display = "none";
-        }
-    });
-
-   // PDF Popup functionality
-window.showPopupPDF = function (pdfUrl) {
-    const pdfPopup = document.getElementById('pdf-popup');
-    const pdfViewer = document.getElementById('pdf-viewer');
-
-    // Detect small screen (mobile/tablet)
-    if (window.innerWidth < 768) {
-        // Open in new browser tab instead of iframe
-        window.open(pdfUrl, "_blank");
-    } else {
-        // Desktop: show in popup iframe
-        pdfViewer.src = pdfUrl;
-        pdfPopup.style.display = 'flex';
-    }
-}
-
-window.closePopupPDF = function () {
-    const pdfPopup = document.getElementById('pdf-popup');
-    const pdfViewer = document.getElementById('pdf-viewer');
-    pdfViewer.src = '';
-    pdfPopup.style.display = 'none';
-}
-
-const pdfPopup = document.getElementById('pdf-popup');
-if (pdfPopup) {
-    pdfPopup.addEventListener('click', function (e) {
-        if (e.target.id === 'pdf-popup') {
-            closePopupPDF();
-        }
-    });
-}
-
-
-    // YouTube Video Modal functionality
-    window.openYouTubeVideo = function (videoUrl) {
-        const modal = document.getElementById('youtube-modal');
-        const iframe = document.getElementById('youtube-iframe');
-
-        // Extract video ID and create embed URL
-        let videoId = '';
-        if (videoUrl.includes('youtu.be/')) {
-            videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-        } else if (videoUrl.includes('youtube.com/watch?v=')) {
-            videoId = videoUrl.split('v=')[1].split('&')[0];
-        }
-
-        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-        iframe.src = embedUrl;
-        modal.style.display = 'flex';
-    }
-
-    window.closeYouTubeModal = function () {
-        const modal = document.getElementById('youtube-modal');
-        const iframe = document.getElementById('youtube-iframe');
-        iframe.src = '';
-        modal.style.display = 'none';
-    }
-
-    // YouTube modal close functionality
-    const youtubeModal = document.getElementById('youtube-modal');
-    const closeYoutubeModal = document.querySelector('.close-youtube-modal');
-
-    if (closeYoutubeModal) {
-        closeYoutubeModal.addEventListener('click', closeYouTubeModal);
-    }
-
-    if (youtubeModal) {
-        youtubeModal.addEventListener('click', function (e) {
-            if (e.target === youtubeModal) {
-                closeYouTubeModal();
-            }
-        });
-    }
-
-    // Panel navigation functionality
-    document.querySelectorAll('.slide-nav').forEach(button => {
-        button.addEventListener('click', function () {
-            const direction = this.classList.contains('next-slide') ? 1 : -1;
-            const panelPreviewArea = this.closest('.panel-preview-area');
-            if (!panelPreviewArea) {
-                console.warn("Could not find parent .panel-preview-area for navigation button.");
-                return;
-            }
-
-            let panels = [];
-            if (panelPreviewArea.querySelector('.govt-panel-item')) {
-                panels = Array.from(panelPreviewArea.querySelectorAll('.govt-panel-item'));
-            } else if (panelPreviewArea.querySelector('.partners-panel-item')) {
-                panels = Array.from(panelPreviewArea.querySelectorAll('.partners-panel-item'));
-            } else {
-                panels = Array.from(panelPreviewArea.querySelectorAll('.panel-item'));
-            }
-
-            if (panels.length === 0) {
-                console.warn("No panels found in the identified slideshow container.");
-                return;
-            }
-
-            let currentPanel = null;
-            let currentPanelIndex = -1;
-            for (let i = 0; i < panels.length; i++) {
-                if (panels[i].style.display === 'block') {
-                    currentPanel = panels[i];
-                    currentPanelIndex = i;
-                    break;
+                item.classList.add("active");
+                const target = item.getAttribute("data-video");
+                const targetElement = document.getElementById(target);
+                if (targetElement) {
+                    targetElement.classList.add("active");
                 }
-            }
-
-            if (currentPanelIndex === -1 && panels.length > 0) {
-                currentPanelIndex = 0;
-                panels[currentPanelIndex].style.display = 'block';
-            }
-
-            if (currentPanel) {
-                currentPanel.style.display = 'none';
-            }
-
-            let newIndex = (currentPanelIndex + direction + panels.length) % panels.length;
-
-            const newPanel = panels[newIndex];
-            if (newPanel) {
-                newPanel.style.display = 'block';
-
-                const panelId = newPanel.id.replace('-content', '');
-                const relevantList = panelPreviewArea.closest('.exhibition-container').querySelector('.exhibition-list');
-                if (relevantList) {
-                    relevantList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
-
-                    const activeLink = relevantList.querySelector(`a[data-panel-id="${panelId}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                        activeLink.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'nearest',
-                            inline: 'center'
-                        });
-                    }
-                }
-            }
+            });
         });
-    });
 
-    // Language selector functionality
-    const langLinks = document.querySelectorAll('.lang-link');
-    langLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            langLinks.forEach(ll => ll.classList.remove('active'));
-            this.classList.add('active');
+        // Video thumbnail functionality
+        document.querySelectorAll(".thumbnail").forEach(thumbnail => {
+            thumbnail.addEventListener("click", function () {
+                const youtubeURL = this.getAttribute("data-youtube") + "?autoplay=1&rel=0";
+                this.outerHTML = `<iframe class="agenda-video" src="${youtubeURL}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%; height:200px; border-radius:10px;"></iframe>`;
+            });
         });
-    });
-
-    // Add loading animation for page transitions
-    function addLoadingEffect() {
-        if (mainContentArea) {
-            mainContentArea.style.opacity = '0.7';
-            setTimeout(() => {
-                mainContentArea.style.opacity = '1';
-            }, 200);
-        }
     }
 
-    // Handle external links
-    document.querySelectorAll('a[href="#"]').forEach(link => {
-        if (!link.hasAttribute('data-page') && !link.hasAttribute('data-subpage')) {
-            link.addEventListener('click', function (e) {
+    setupExhibitionFunctionality() {
+        // Exhibition panel preview
+        document.querySelectorAll('.exhibition-list a').forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log('External link clicked:', this.textContent, ' - Placeholder action.');
+
+                // Active link highlight
+                link.closest('.exhibition-list').querySelectorAll('a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Panel container in same exhibition section
+                const panelContainer = link.closest('.exhibition-container').querySelector('.panel-preview-area');
+                if (!panelContainer) return;
+
+                // Hide all panels
+                panelContainer.querySelectorAll('.panel-item, .govt-panel-item, .partners-panel-item').forEach(p => {
+                    p.style.display = 'none';
+                });
+
+                // Show selected panel
+                const panelId = link.getAttribute('data-panel-id');
+                const panel = document.getElementById(panelId + '-content');
+                if (panel) {
+                    panel.style.display = 'block';
+                }
+            });
+        });
+    }
+
+    setupPanelZoom() {
+        // Add click handlers to all zoomable panels
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('zoomable-panel')) {
+                this.openZoomModal(e.target);
+            }
+        });
+
+        // Set up zoom modal
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeBtn = document.querySelector('.close-panel-modal');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const resetBtn = document.getElementById('reset-zoom');
+
+        // Close modal
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.closeZoomModal();
             });
         }
-    });
 
-    // Add hover effects to stat boxes
-    const statBoxes = document.querySelectorAll('.stat-box');
-    statBoxes.forEach(box => {
-        box.addEventListener('mouseenter', function () {
-            this.style.transform = 'scale(1.05)';
-            this.style.transition = 'transform 0.3s ease';
-        });
-
-        box.addEventListener('mouseleave', function () {
-            this.style.transform = 'scale(1)';
-        });
-    });
-
-    // Add click effect to logo items
-    const logoItems = document.querySelectorAll('.logo-item');
-    logoItems.forEach(item => {
-        item.addEventListener('click', function () {
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
-        });
-    });
-
-    // Initialize page with fade-in effect
-    document.body.style.opacity = '1';
-    document.body.style.transition = 'opacity 0.5s ease';
-
-    // Handle window resize for mobile menu
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 768) {
-            // Reset mobile menu state when switching to desktop
-            navigation.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.classList.remove('mobile-menu-open');
-
-            // Reset dropdown states
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
+        // Close on background click
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeZoomModal();
+                }
             });
         }
-    });
-});
 
+        // Zoom controls
+        if (zoomInBtn) {
+            zoomInBtn.addEventListener('click', () => {
+                this.zoomLevel *= 1.2;
+                this.updateZoom();
+            });
+        }
 
+        if (zoomOutBtn) {
+            zoomOutBtn.addEventListener('click', () => {
+                this.zoomLevel /= 1.2;
+                if (this.zoomLevel < 1) this.zoomLevel = 1;
+                this.updateZoom();
+            });
+        }
 
-// Pop-up Panel (Modal) functionality
-const panelImages = document.querySelectorAll('.panel-image');
-const modal = document.getElementById('image-modal');
-const modalImg = document.getElementById('modal-image');
-const closeModalSpan = document.querySelector('.close-panel-modal');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                this.resetZoom();
+            });
+        }
 
-panelImages.forEach(image => {
-    image.addEventListener('click', function () {
-        const fullSrc = this.dataset.fullSrc;
-        modal.style.display = 'block';
-        modalImg.src = fullSrc;
-    });
-});
+        // Mouse wheel zoom
+        if (modalImg) {
+            modalImg.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    this.zoomLevel *= 1.1;
+                } else {
+                    this.zoomLevel /= 1.1;
+                    if (this.zoomLevel < 1) this.zoomLevel = 1;
+                }
+                this.updateZoom();
+            });
 
-if (closeModalSpan) {
-    closeModalSpan.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
-}
+            // Dragging functionality
+            modalImg.addEventListener('mousedown', (e) => {
+                this.isDragging = true;
+                this.startX = e.clientX - this.translateX;
+                this.startY = e.clientY - this.translateY;
+                modalImg.style.cursor = 'grabbing';
+            });
 
-if (modal) {
-    modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
+            document.addEventListener('mousemove', (e) => {
+                if (!this.isDragging) return;
+                e.preventDefault();
+                this.translateX = e.clientX - this.startX;
+                this.translateY = e.clientY - this.startY;
+                this.updateZoom();
+            });
+
+            document.addEventListener('mouseup', () => {
+                this.isDragging = false;
+                if (modalImg) {
+                    modalImg.style.cursor = 'grab';
+                }
+            });
+        }
+    }
+
+    openZoomModal(img) {
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        
+        if (modal && modalImg) {
+            const fullSrc = img.getAttribute('data-full-src') || img.src;
+            modalImg.src = fullSrc;
+            modal.style.display = 'flex';
+            this.resetZoom();
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    closeZoomModal() {
+        const modal = document.getElementById('image-modal');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            this.resetZoom();
+        }
+    }
+
+    updateZoom() {
+        const modalImg = document.getElementById('modal-image');
+        if (modalImg) {
+            modalImg.style.transform = `scale(${this.zoomLevel}) translate(${this.translateX / this.zoomLevel}px, ${this.translateY / this.zoomLevel}px)`;
+        }
+    }
+
+    resetZoom() {
+        this.zoomLevel = 1;
+        this.translateX = 0;
+        this.translateY = 0;
+        this.updateZoom();
+    }
+
+    setupModals() {
+        // YouTube modal
+        this.setupYouTubeModal();
+    }
+
+    setupYouTubeModal() {
+        window.openYouTubeVideo = (videoUrl) => {
+            const modal = document.getElementById('youtube-modal');
+            const iframe = document.getElementById('youtube-iframe');
+
+            let videoId = '';
+            if (videoUrl.includes('youtu.be/')) {
+                videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+            } else if (videoUrl.includes('youtube.com/watch?v=')) {
+                videoId = videoUrl.split('v=')[1].split('&')[0];
+            }
+
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            iframe.src = embedUrl;
+            modal.style.display = 'flex';
+        }
+
+        window.closeYouTubeModal = () => {
+            const modal = document.getElementById('youtube-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            iframe.src = '';
             modal.style.display = 'none';
         }
-    });
+
+        const youtubeModal = document.getElementById('youtube-modal');
+        const closeYoutubeModal = document.querySelector('.close-youtube-modal');
+
+        if (closeYoutubeModal) {
+            closeYoutubeModal.addEventListener('click', window.closeYouTubeModal);
+        }
+
+        if (youtubeModal) {
+            youtubeModal.addEventListener('click', (e) => {
+                if (e.target === youtubeModal) {
+                    window.closeYouTubeModal();
+                }
+            });
+        }
+    }
+
+    setupGallery() {
+        const popup = document.getElementById("image-popup");
+        const popupImage = document.getElementById("popup-image");
+        const closePopup = document.querySelector(".close-popup");
+        const triggers = document.querySelectorAll(".popup-trigger");
+
+        triggers.forEach(img => {
+            img.addEventListener("click", () => {
+                popup.style.display = "flex";
+                popupImage.src = img.src;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        if (closePopup) {
+            closePopup.addEventListener("click", () => {
+                popup.style.display = "none";
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (popup) {
+            popup.addEventListener("click", (e) => {
+                if (e.target === popup) {
+                    popup.style.display = "none";
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    }
+
+    setupFlipBookViewer() {
+        // Global function for opening flip book
+        window.openFlipBook = (pdfUrl) => {
+            const flipbookModal = document.getElementById('flipbook-modal');
+            const flipbookIframe = document.getElementById('flipbook-iframe');
+
+            if (window.innerWidth < 768) {
+                // On mobile, open in new tab
+                window.open(pdfUrl, "_blank");
+            } else {
+                // On desktop, show in flip book modal
+                flipbookIframe.src = pdfUrl;
+                flipbookModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        window.closeFlipBook = () => {
+            const flipbookModal = document.getElementById('flipbook-modal');
+            const flipbookIframe = document.getElementById('flipbook-iframe');
+            flipbookIframe.src = '';
+            flipbookModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Set up modal close events
+        const flipbookModal = document.getElementById('flipbook-modal');
+        const closeFlipbook = document.querySelector('.close-flipbook');
+
+        if (closeFlipbook) {
+            closeFlipbook.addEventListener('click', window.closeFlipBook);
+        }
+
+        if (flipbookModal) {
+            flipbookModal.addEventListener('click', (e) => {
+                if (e.target === flipbookModal) {
+                    window.closeFlipBook();
+                }
+            });
+        }
+
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const flipbookModal = document.getElementById('flipbook-modal');
+                if (flipbookModal && flipbookModal.style.display === 'block') {
+                    window.closeFlipBook();
+                }
+            }
+        });
+    }
+
+    setupAnimations() {
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        const animatedElements = document.querySelectorAll('.stat-item, .about-content, .exhibition-subpage-content, .resource-item, .partner-logo-item');
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Logo click effects
+        const logoItems = document.querySelectorAll('.logo-item');
+        logoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    item.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    }
 }
 
-// Utility functions
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+// Navigation function for exhibition panels
+function navigatePanels(direction, sectionType) {
+    let panels = [];
+    let activeIndex = -1;
+    let listLinks = [];
+
+    if (sectionType === 'moving-bengaluru') {
+        panels = Array.from(document.querySelectorAll('#moving-bengaluru-content .panel-item'));
+        listLinks = Array.from(document.querySelectorAll('#moving-bengaluru-content .exhibition-list a'));
+    } else if (sectionType === 'govt-panel') {
+        panels = Array.from(document.querySelectorAll('#govt-panel-content .govt-panel-item'));
+        listLinks = Array.from(document.querySelectorAll('#govt-panel-content .exhibition-list a'));
+    } else if (sectionType === 'partners-panel') {
+        panels = Array.from(document.querySelectorAll('#partners-panel-ex-content .partners-panel-item'));
+        listLinks = Array.from(document.querySelectorAll('#partners-panel-ex-content .exhibition-list a'));
+    }
+
+    if (panels.length === 0) return;
+
+    // Find currently active panel
+    activeIndex = panels.findIndex(panel => panel.style.display === 'block');
+    if (activeIndex === -1) activeIndex = 0;
+
+    // Hide current panel and link
+    if (panels[activeIndex]) {
+        panels[activeIndex].style.display = 'none';
+    }
+    if (listLinks[activeIndex]) {
+        listLinks[activeIndex].classList.remove('active');
+    }
+
+    // Calculate new index
+    const newIndex = (activeIndex + direction + panels.length) % panels.length;
+
+    // Show new panel and activate link
+    if (panels[newIndex]) {
+        panels[newIndex].style.display = 'block';
+    }
+    if (listLinks[newIndex]) {
+        listLinks[newIndex].classList.add('active');
+        // Scroll the link into view
+        listLinks[newIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+        });
+    }
 }
 
-// Handle window resize for responsive adjustments
-window.addEventListener('resize', function () {
-    const carouselTrack = document.getElementById('carousel-track');
-    if (carouselTrack) {
-        // CSS handles responsive adjustments with percentages
+// Global function for slide navigation (backward compatibility)
+window.changeSlide = function(direction) {
+    // This function is called by the existing HTML onclick handlers
+    const activeSlideNav = document.querySelector('.slide-nav.prev-slide, .slide-nav.next-slide');
+    if (activeSlideNav) {
+        activeSlideNav.click();
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize translation system
+    const translationSystem = new TranslationSystem();
+    
+    // Initialize website functionality
+    const website = new Website();
+    
+    // Set body opacity for smooth initial load
+    document.body.style.opacity = '1';
+    document.body.style.transition = 'opacity 0.5s ease';
+});
+
+// Keyboard navigation support
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Close any open modals
+        document.querySelectorAll('.modal').forEach(modal => {
+            if (modal.style.display === 'flex' || modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Close image popup
+        const imagePopup = document.getElementById('image-popup');
+        if (imagePopup && imagePopup.style.display === 'flex') {
+            imagePopup.style.display = 'none';
+        }
+        
+        // Close flip book modal
+        if (window.closeFlipBook) {
+            window.closeFlipBook();
+        }
+        
+        // Restore body overflow
+        document.body.style.overflow = '';
     }
 });
 
-// Add intersection observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Performance optimization: Debounce resize events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', function () {
-    const animatedElements = document.querySelectorAll('.stat-item, .about-content, .exhibition-subpage-content');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-});
+window.addEventListener('resize', debounce(() => {
+    // Handle responsive adjustments
+    const carouselTrack = document.getElementById('carousel-track');
+    if (carouselTrack) {
+        // CSS handles most responsive adjustments automatically
+    }
+}, 250));
