@@ -392,7 +392,7 @@ body {
 }
 
 .carousel-slide img {
-    width: 88%;
+    width: 100%;
     height: auto;
     display: block;
 }

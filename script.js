@@ -502,7 +502,7 @@ class ScrollSpyNavigation {
 
             if (isVideo && currentSlide === 0) {
                 // For the first video slide, wait for video completion before advancing
-                const videoDuration = 70000; // Estimated video duration in milliseconds
+                const videoDuration = 68000; // Estimated video duration in milliseconds
                 videoCompletionTimer = setTimeout(() => {
                     nextSlide();
                 }, videoDuration);
