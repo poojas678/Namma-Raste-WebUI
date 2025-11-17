@@ -17,6 +17,14 @@ body {
     color: black;
     overflow-x: hidden;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 /* Fixed Header Container - truly fixed with no scroll */
@@ -318,17 +326,17 @@ body {
 
 /* Main Content - with scrollable container */
 .main-content {
-    margin-top: 120px;
     width: 100%;
-    height: calc(100vh - 200px);
     overflow-y: auto;
     overflow-x: hidden;
+    min-height: calc(100vh - 120px - 80px);
+    flex: 1;
+    
 }
 
 /* Section Styling */
 .section {
     min-height: 100vh;
-    padding: 60px 0;
     scroll-margin-top: 0;
 }
 
@@ -358,6 +366,7 @@ body {
     font-weight: bold;
     color: #2d5016;
     margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 /* Hero Section */
@@ -449,11 +458,18 @@ body {
 }
 
 .video-wrapper {
-    position: relative;
+    /* position: relative;
+    width: 100%; */
+    /* padding-top: 56.25%; */
+    /* overflow: hidden; */
     width: 100%;
-    padding-top: 56.25%;
-    overflow: hidden;
+    height: 100%;
 }
+ #local-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+ }
 
 .video-wrapper iframe {
     position: absolute;
@@ -618,7 +634,6 @@ body {
 /* Statistics Section - Fixed size stat boxes */
 .statistics-section {
     padding: 40px 0;
-    background-color: white;
     position: relative;
 }
 
@@ -914,6 +929,7 @@ body {
 .exhibition-btn.active {
     background-color: #2d5016;
     color: white;
+    text-transform: uppercase;
 }
 
 .exhibition-content {
@@ -1300,6 +1316,7 @@ body {
     text-align: center;
     margin-bottom: 60px;
 }
+
 .subsection-title {
     font-size: 1.8em;
     color: #333;
@@ -1632,6 +1649,11 @@ body {
 
 .partner-logo-item:hover img {
     transform: scale(1.1);
+}
+
+footer {
+    margin: 0;
+    padding: 20px 0; /* adjust padding as needed */
 }
 
 /* Footer - Fixed to touch container */
@@ -2113,4 +2135,5 @@ img[loading="lazy"] {
         opacity: 1;
     }
 }
+
 

@@ -42,10 +42,10 @@ class TranslationSystem {
                     "platformDesc": "for mobility experts, civic groups, students etc. to engage in insightful sessions and interactive activities aimed at raising awareness on the city's mobility challenges and solutions.",
                     "imageName": "Graphics Credits: Arathy Aluckal/WRI India",
                     "stats": {
-                        "attendees": "Approx. 5000 attendees",
-                        "speakers": "70 Speakers",
-                        "organisations": " 68 Government & Partner Organisations",
-                        "schools": "16+ Schools & Colleges"
+                        "attendees": "attendees",
+                        "speakers": "Speakers",
+                        "organisations": "Government & Partner Organisations",
+                        "schools": "Schools & Colleges"
                     },
                     "accessibility": "Namma Raste 2025 event was made accessible with the support",
                     "apd": "APD",
@@ -54,9 +54,9 @@ class TranslationSystem {
                 },
                 "convening": {
                     "title": "CONVENING",
-                    "day1": "Day 1",
-                    "day2": "Day 2",
-                    "day3": "Day 3",
+                    "day1": "DAY 1",
+                    "day2": "DAY 2",
+                    "day3": "DAY 3",
                     "sessions": {
                         "day1": {
                             "session1": {
@@ -472,10 +472,10 @@ class TranslationSystem {
                     "platformDesc": "ನಗರದ ಚಲನಶೀಲತೆಯ ಸವಾಲುಗಳು ಮತ್ತು ಪರಿಹಾರಗಳ ಕುರಿತು ಜಾಗೃತಿ ಮೂಡಿಸಲು ಚಲನಶೀಲತೆ ತಜ್ಞರು, ನಾಗರಿಕ ಗುಂಪುಗಳು, ವಿದ್ಯಾರ್ಥಿಗಳು ಮುಂತಾದವರ ಒಳನೋಟವುಳ್ಳ ಗೋಷ್ಠಿಗಳು ಮತ್ತು ಸಂವಾದಾತ್ಮಕ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ತೊಡಗಿಸಿಕೊಳ್ಳಲು ಒಂದು ವೇದಿಕೆ.",
                     "imageName": "ಗ್ರಾಫಿಕ್ಸ್ ಕ್ರೆಡಿಟ್ಸ್: ಅರಾಥಿ ಅಲುಕಲ್ / WRI ಭಾರತ",
                     "stats": {
-                        "attendees": "ಸುಮಾರು 5000 ಭಾಗಿಗಳು",
-                        "speakers": "70 ಭಾಷಣಕಾರರು",
-                        "organisations": "68 ಸರ್ಕಾರಿ ಮತ್ತು ಪಾಲುದಾರ ಸಂಸ್ಥೆಗಳು",
-                        "schools": "16+ ಶಾಲಾಕಾಲೇಜುಗಳು "
+                        "attendees": "ಭಾಗಿಗಳು",
+                        "speakers": "ಭಾಷಣಕಾರರು",
+                        "organisations": "ಸರ್ಕಾರಿ ಮತ್ತು ಪಾಲುದಾರ ಸಂಸ್ಥೆಗಳು",
+                        "schools": "ಶಾಲಾಕಾಲೇಜುಗಳು "
                     },
                     "accessibility": "ನಮ್ಮ ರಸ್ತೆ 2025 ಕಾರ್ಯಕ್ರಮವನ್ನು ಪ್ರವೇಶಿಸಬಹುದಾದಂತೆ ಮಾಡಲಾಗಿದೆನಮ್ಮ ರಸ್ತೆ 2025 ಕಾರ್ಯಕ್ರಮವನ್ನು",
                     "apd": "ಎಪಿಡಿ",
@@ -1314,77 +1314,78 @@ class ScrollSpyNavigation {
     }
 
     // Enhanced carousel with improved video handling
-    setupCarousel() {
-        const carouselTrack = document.getElementById('carousel-track');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicatorsContainer = document.querySelector('.carousel-indicators');
+   setupCarousel() {
+    const carouselTrack = document.getElementById('carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
 
-        if (!carouselTrack || !slides.length) return;
+    if (!carouselTrack || !slides.length) return;
 
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        let autoSlideInterval;
-        let videoCompletionTimer;
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+    let videoTimer;
 
-        // Generate indicators dynamically
-        indicatorsContainer.innerHTML = "";
-        for (let i = 0; i < totalSlides; i++) {
-            const indicator = document.createElement("span");
-            indicator.classList.add("indicator");
-            indicator.dataset.slide = i;
-            if (i === 0) indicator.classList.add("active");
-            indicatorsContainer.appendChild(indicator);
+    // Build indicators dynamically
+    indicatorsContainer.innerHTML = "";
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("indicator");
+        dot.dataset.slide = i;
+        if (i === 0) dot.classList.add("active");
+        indicatorsContainer.appendChild(dot);
 
-            indicator.addEventListener("click", () => {
-                currentSlide = i;
-                updateCarousel();
-                resetAutoSlide();
-            });
-        }
-
-        const updateCarousel = () => {
-            const translateX = -currentSlide * 100;
-            carouselTrack.style.transform = `translateX(${translateX}%)`;
-
-            document.querySelectorAll('.carousel-indicators .indicator').forEach((indicator, index) => {
-                indicator.classList.remove('active', 'active-green');
-                if (index === currentSlide) {
-                    if (index === totalSlides - 1) {
-                        indicator.classList.add('active-green');
-                    } else {
-                        indicator.classList.add('active');
-                    }
-                }
-            });
-        };
-
-        const nextSlide = () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
+        dot.addEventListener("click", () => {
+            currentSlide = i;
             updateCarousel();
             resetAutoSlide();
-        };
+        });
+    }
 
-        const resetAutoSlide = () => {
-            clearInterval(autoSlideInterval);
-            clearTimeout(videoCompletionTimer);
+    const updateCarousel = () => {
+        const translateX = -currentSlide * 100;
+        carouselTrack.style.transform = `translateX(${translateX}%)`;
 
-            const currentSlideElement = slides[currentSlide];
-            const isVideo = currentSlideElement.getAttribute('data-slide-type') === 'video';
+        document.querySelectorAll(".indicator").forEach((ind, idx) => {
+            ind.classList.toggle("active", idx === currentSlide);
+        });
+    };
 
-            if (isVideo && currentSlide === 0) {
-                // For the video slide, wait longer before advancing
-                const videoDuration = 70000; // 30 seconds for video preview
-                videoCompletionTimer = setTimeout(() => {
-                    nextSlide();
-                }, videoDuration);
-            } else {
-                // For image slides, use normal interval
-                autoSlideInterval = setInterval(nextSlide, 4000);
-            }
-        };
-
-        // Start auto slide
+    const nextSlide = () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
         resetAutoSlide();
+    };
+
+    const video = document.getElementById("local-video");
+
+    const resetAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+        clearTimeout(videoTimer);
+
+        const currentSlideElement = slides[currentSlide];
+        const isVideo = currentSlideElement.getAttribute("data-slide-type") === "video";
+
+        if (isVideo) {
+            video.currentTime = 0;
+            video.play();
+
+            videoTimer = setTimeout(() => {
+                currentSlide = 0;         // Jump to first slide after video ends
+                updateCarousel();
+                resetAutoSlide();
+            }, (video.duration * 1000) || 30000);
+
+        } else {
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+    };
+
+    updateCarousel();
+    resetAutoSlide();
+
+
+
 
         // Reset video when returning to first slide
         const observer = new MutationObserver(() => {
