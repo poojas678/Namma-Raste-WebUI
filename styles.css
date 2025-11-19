@@ -21,14 +21,15 @@ body {
     flex-direction: column;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
 /* Fixed Header Container - truly fixed with no scroll */
-.header-container {
+/* .header-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -37,8 +38,13 @@ html, body {
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+} */
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
 }
-
 /* Sticky Navigation - becomes sticky when scrolling past header */
 .header-container.sticky {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -329,9 +335,10 @@ html, body {
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    min-height: calc(100vh - 120px - 80px);
+    /* min-height: calc(100vh - 120px - 80px); */
+    margin-top: 10px;
     flex: 1;
-    
+
 }
 
 /* Section Styling */
@@ -350,8 +357,9 @@ html, body {
 
 /* Fix for home section - remove extra space */
 .home-section-container {
-    min-height: fit-content;
     padding: 0;
+    margin: 0;
+    min-height: fit-content;
 }
 
 .container {
@@ -370,18 +378,28 @@ html, body {
 }
 
 /* Hero Section */
-.hero-section {
+/* .hero-section {
     background-color: #f8f9fa;
     min-height: fit-content;
     padding: 0;
     position: relative;
-}
+    padding-top: 220px;
+} */
 
-.hero-content {
+.hero-section {
     position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
 }
 
-.namma-raste-logo {
+
+/* .hero-content {
+    position: relative;
+} */
+
+/* .namma-raste-logo {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -390,27 +408,64 @@ html, body {
     padding: 2px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+} */
+.namma-raste-logo {
+    position: absolute;
+    top: 250px;        /* stays on top of images */
+    left: 20px;
+    z-index: 100;
+    background: rgba(255,255,255,0.8);
+    padding: 3px 6px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+.namma-raste-logo .event-logo {
+    width: 200px !important;   /* reduce size here */
+    height: auto !important;
+    object-fit: contain;
 }
 
-.event-logo {
-    height: 60px;
+/* .event-logo {
+    height: 30px;
     width: auto;
+} */
+
+/* .hero-content {
+    position: relative;
+    z-index: 9999;
+} */
+
+/* 
+.namma-raste-logo {
+    top: 250px;
+    z-index: 99999 !important;
+} */
+
+.carousel-slide img,
+.carousel-slide video {
+    position: relative;
+    z-index: 1;
 }
 
 /* Carousel Section */
+
 .carousel-section {
-    background-color: #f8f9fa;
+    position: relative;
+    margin: 0;
     padding: 0;
-    min-height: fit-content;
-    margin-bottom: 0; /* Remove extra space */
 }
 
-.carousel-container {
+/* .carousel-container {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    margin-bottom: 0; /* Remove extra space */
+    margin-bottom: 0;
+} */
+ .carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 .carousel-track {
@@ -421,30 +476,41 @@ html, body {
 
 .carousel-slide {
     min-width: 100%;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
 }
 
-.carousel-slide img {
+.carousel-slide img,
+.carousel-slide video {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
 }
 
 .carousel-indicators {
     position: absolute;
-    bottom: 66px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
+    z-index: 60;
 }
 
-.indicator {
+/* .indicator {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+ .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -465,11 +531,12 @@ html, body {
     width: 100%;
     height: 100%;
 }
- #local-video {
+
+#local-video {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
- }
+    object-fit: cover;
+}
 
 .video-wrapper iframe {
     position: absolute;
@@ -1229,6 +1296,7 @@ html, body {
     margin-bottom: 40px;
     align-items: start;
 }
+
 .resource-item {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -1332,6 +1400,7 @@ html, body {
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
+
 .language-item {
     display: flex;
     flex-direction: column;
@@ -1347,10 +1416,12 @@ html, body {
     min-height: 400px;
     width: 280px;
 }
+
 .language-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
 .language-item img {
     max-width: 180px;
     height: auto;
@@ -1653,7 +1724,8 @@ html, body {
 
 footer {
     margin: 0;
-    padding: 20px 0; /* adjust padding as needed */
+    padding: 20px 0;
+    /* adjust padding as needed */
 }
 
 /* Footer - Fixed to touch container */
@@ -1723,30 +1795,51 @@ footer {
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     html {
-        scroll-padding-top: 260px;
+        scroll-padding-top: 200px;
     }
 
     .header-container {
         position: fixed;
+        top: 0;
+    }
+
+    .header-container.sticky .top-bar,
+    .header-container.sticky .header {
+        display: block; /* MUST be visible, overriding the base 'display: none' */
     }
 
     .header-container.sticky {
         top: 0;
     }
 
-    .header-container.sticky .mobile-menu-toggle {
-        top: 10px;
-        left: 10px;
+   .header-container.sticky .mobile-menu-toggle {
+        /* If the total header height shrinks when sticky (e.g., to 60px for navigation), 
+           adjust the toggle position. Since we're keeping the logo fixed, 
+           the sticky logic is simpler. */
+        top: 15px; /* Adjust as needed based on where the menu toggle should appear */
+        left: 15px;
+        /* Re-apply styles if they were removed in the base sticky class */
+        background-color: #2d5016;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .main-content {
-        margin-top: 260px;
-        height: calc(100vh - 260px);
+   .main-content {
+        /* Set margin-top to the total height of the fixed header */
+        margin-top: 200px; 
+        /* The original calc(100vh - 260px) assumes the footer/bottom is 60px, 
+           and the header is 200px. Keeping the original height calculation 
+           for the container for now, but focus is on margin-top. */
+        height: auto; /* Allow content to scroll freely. Change from calc(100vh - 260px) */
+    }
+    .carousel-container {
+        height: 350px; /* Make the carousel shorter for mobile view */
     }
 
     .section {
         scroll-margin-top: 0;
-        padding: 40px 0;
+        /* padding: 40px 0; */
     }
 
     .mobile-menu-toggle {
@@ -1770,16 +1863,27 @@ footer {
         position: static;
         margin-top: 5px;
     }
+   .namma-raste-logo {
+        top: 20px; 
+        left: 10px;
+    }
+
+    .namma-raste-logo .event-logo {
+        width: 110px !important;   /* smaller logo on mobile */
+    }
+
 
     .navigation {
         position: fixed;
-        top: 200px;
+        /* Position it immediately below the visible top-bar and logo header */
+        top: 200px; 
         left: -100%;
         width: 280px;
-        height: calc(100vh - 200px);
+        /* The menu takes up the rest of the screen height below the fixed header */
+        height: calc(100vh - 200px); 
         z-index: 1000;
         transition: left 0.3s ease;
-        overflow-y: auto;
+        overflow-y: auto; /* Ensure menu content is scrollable if needed */
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -1788,8 +1892,12 @@ footer {
     }
 
     .header-container.sticky .navigation {
-        top: 60px;
-        height: calc(100vh - 60px);
+        /* This green bar is the navigation. It is part of the fixed header 
+           structure above the main content on *desktop*, but on mobile 
+           it acts as the container for the hidden, full-screen menu. 
+           We keep it visible/fixed. */
+        background-color: #2d5016; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     .header-container.sticky .navigation.active {
@@ -1874,9 +1982,9 @@ footer {
 
     /* Fixed stat boxes sizing in mobile */
     .stats-grid {
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
-        gap: 15px;
+        gap: 32px;
     }
 
     .stat-item {
@@ -1926,7 +2034,7 @@ footer {
         padding: 8px 12px;
         font-size: 12px;
     }
-    
+
 
     .standard-exhibition-container {
         flex-direction: column;
@@ -1971,7 +2079,7 @@ footer {
         min-height: 350px;
     }
 
-     .language-item {
+    .language-item {
         width: 100%;
         max-width: 320px;
     }
@@ -1981,6 +2089,7 @@ footer {
         align-items: center;
         gap: 20px;
     }
+
     .gallery-grid,
     .news-grid {
         grid-template-columns: 1fr;
@@ -2030,8 +2139,14 @@ footer {
 
 @media (max-width: 480px) {
     .main-content {
-        margin-top: 240px;
-        height: calc(100vh - 240px);
+        margin-top: 180px;
+        height: calc(100vh - 180px);
+    }
+    html {
+        scroll-padding-top: 180px;
+    }
+    .carousel-container {
+        height: 260px; /* Even shorter carousel for small phones */
     }
 
     .logo {
@@ -2135,5 +2250,3 @@ img[loading="lazy"] {
         opacity: 1;
     }
 }
-
-
